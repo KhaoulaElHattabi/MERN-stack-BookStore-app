@@ -30,15 +30,19 @@
 const deleteCategoryById=async(id)=>{
     return await Category.findByIdAndDelete(id)
 }
+const deleteBookById=async(id)=>{
+   return await Book.findByIdAndDelete(id)
+}
 
 module.exports={
     getAllBooks,
     getBookById,
     createBook,
-    updateBook,
+    deleteBookById,
     getAllCategories,
     createCategory,
-    deleteCategoryById
+    deleteCategoryById,
+    updateBook
 }
 
 
