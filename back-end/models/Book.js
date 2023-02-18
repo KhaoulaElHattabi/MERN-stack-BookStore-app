@@ -8,7 +8,7 @@ const bookSchema=new mongoose.Schema({
     date_publication:{type:Date,default:Date.now()},
     image:{type:String},
     category:{
-        type:mongoose.Types.objectId,
+        type:mongoose.Types.ObjectId,
         ref:"Category"
     }
     
