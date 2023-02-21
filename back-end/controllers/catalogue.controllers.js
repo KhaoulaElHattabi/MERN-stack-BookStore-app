@@ -1,3 +1,4 @@
+
 const catalService=require("../services/catalogueServices")
 
 
@@ -47,8 +48,14 @@ const addBook=async(req,res)=>{
 
 const addCategory=async(req,res)=>{
     try{
-       await catalService.createCategory(req.body)
+        const exists = await Category.findOne({name:req.body.name})
+          if(exists){
+                res.status(400).json("Category Already exists")
+            }else{
+            await catalService.createCategory(req.body)
         res.status(200).json("Category added succesfully!")
+            }
+        
     }catch(error){
         res.status(500).json(error)
     }
@@ -76,12 +83,26 @@ const getCategories=async(req,res)=>{
 const updateCategory=async(req,res)=>{
     try{
       await catalService.updateCategory(req.body)
-        res.status(200).json("Catgory Modifié");
+        res.status(200).json("Catgory modified succesfully");
     }catch(error){
+        console.log("Error updating category:", error);
+        console.log("Request params:", req.params);
+        console.log("Request body:", req.body);
         res.status(500).json(error)
     }
 } 
 
+const getCategory= async (req,res)=>{
+    try{
+        const cat=await catalService.getCategoryById(req.params.id)
+        res.status(200).json(cat)
+        }
+       catch(error){
+        res.status(500).json(error)
+      
+    }
+}
+
 module.exports={
-    getBook,getBooks,addBook,updateBook,deleteBook,getCategories,addCategory,deleteCategory,updateCategory
+    getBook,getBooks,addBook,updateBook,deleteBook,getCategories,addCategory,deleteCategory,updateCategory, getCategory
 }

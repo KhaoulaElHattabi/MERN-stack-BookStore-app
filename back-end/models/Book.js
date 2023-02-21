@@ -9,7 +9,8 @@ const bookSchema=new mongoose.Schema({
     image:{type:String},
     category:{
         type:mongoose.Types.ObjectId,
-        ref:"Category"
+        ref:"Category",
+        required:true
     }
     
 })

@@ -4,7 +4,7 @@ const app=express()
 const catRoutes=require("./routes/categoryRoutes")
 mongoose.set("strictQuery",false)
 const bookRoutes=require("./routes/bookRoutes");
-const { json } = require("express");
+const usrRoutes=require("./routes/userRoutes")
 
 
 require("dotenv").config()
@@ -12,6 +12,7 @@ require("dotenv").config()
 app.use(express.json())
 app.use("/categories",catRoutes)
 app.use("/books",bookRoutes)
+app.use("/users",usrRoutes)
 
 
 
@@ -38,6 +39,4 @@ app.listen(process.env.PORT,()=>{
       else console.log("Connection error :" + err);
     }
   )
-
-
 */
