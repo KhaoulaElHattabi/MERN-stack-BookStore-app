@@ -13,5 +13,10 @@ const getAlUsers=async ()=>{
     return await User.find()
 }
 
+const getUser=async(id)=>{
+    return await User.findById(id)
+}
 
-module.exports={createUser,getAlUsers}
+
+
+module.exports={createUser,getAlUsers,getUser}

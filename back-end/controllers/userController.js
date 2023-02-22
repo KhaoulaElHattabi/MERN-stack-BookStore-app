@@ -4,6 +4,7 @@ const bcrypt =require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 
+
 const addUser=async(req,res)=>{
     try{
         await userService.createUser(req.body)
@@ -38,10 +39,10 @@ const userLogin=async (req,res)=>{
         }
             const checkPassword = await bcrypt.compare(password,user.password)
             if (!checkPassword){
-                return res.status(400).send({error: "Password does not match"})
+                return res.status(404).send({error: "Password does not match"})
             }
             const token = jwt.sign({
-                userId: user._id,
+                id: user._id,
                 username:user.uName
             }, 'secret',
             {expiresIn: "24h"});
@@ -49,11 +50,26 @@ const userLogin=async (req,res)=>{
             return res.status(200).send({
                 msg: "Login successful...!",
                 username: user.uName,
+                id:user._id,
                 token,
+                
               });
 
         }catch(error){
             return res.status(500).json(error);
+        }
+       
+    }
+
+
+    const getUser=async (req,res)=>{
+        try{
+            const u=await userService.getUser(req.params.id)
+            res.status(200).json(u)
+            }
+           catch(error){
+            res.status(500).json(error)
+          
         }
     }
 
@@ -74,7 +90,7 @@ const verifyUser=async(req,res,next)=>{
         
         
 module.exports={
-    addUser,getUsers,userLogin
+    addUser,getUsers,userLogin,getUser
     }
 
 

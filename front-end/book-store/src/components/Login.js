@@ -22,14 +22,18 @@ import { useNavigate } from 'react-router-dom';
     e.preventDefault();
     console.log(uname,password)
     try{
-      const token =await userService.userLogin(uname,password)
-      console.log(token)
-      if(token){
-        localStorage.setItem("token",token)
-        setLoggedIn(true);
-        navig("/PageNotFound")
-
+      const user =await userService.userLogin(uname,password)
+      //console.log(user)
+      if(user.error){
+        setErrorMessage(user.error)
+      }else{
+      //console.log(user.token)
+      localStorage.setItem("token",user.token)
+      setLoggedIn(true);
+        //localStorage.setItem('user', JSON.stringify(user));*/
+      navig("/PageNotFound")
       }
+      
     }catch(error){
       console.log(error)
     }
@@ -61,6 +65,8 @@ import { useNavigate } from 'react-router-dom';
         Enregistrer
       </Button>
     </Form>
+    <br></br>
+      <div>Error Message : {errorMessage}</div>
     </>
     );
 }
