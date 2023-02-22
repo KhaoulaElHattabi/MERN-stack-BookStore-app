@@ -40,13 +40,20 @@
 .login{
  max-width: 400px;
   margin: auto;
-  padding-top: 50px;
+
 }
 
 .pg-not-fd{
   margin: auto;
   font-weight:bold;
   font-size:25px;
-  padding:250px  ;
+
   
+}
+
+.MarginText{
+  margin-top:20px;
+  text-align: center;
+  font-weight: bold;
+
 }

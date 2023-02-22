@@ -9,6 +9,8 @@ import '../App.css';
  function Login(){
     return(
         <>
+        <h3 className="MarginText">Login</h3>
+        <br></br>
         <Form className="login" >
       <Form.Group className="mb-3" >
         <Form.Label >Enter username</Form.Label>
