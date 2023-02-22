@@ -5,10 +5,12 @@ const catRoutes=require("./routes/categoryRoutes")
 mongoose.set("strictQuery",false)
 const bookRoutes=require("./routes/bookRoutes");
 const usrRoutes=require("./routes/userRoutes")
-
+const cors=require("cors")
 
 require("dotenv").config()
 
+
+app.use(cors())
 app.use(express.json())
 app.use("/categories",catRoutes)
 app.use("/books",bookRoutes)
