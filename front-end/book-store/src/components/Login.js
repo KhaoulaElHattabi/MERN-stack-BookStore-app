@@ -64,7 +64,7 @@ import 'react-toastify/dist/ReactToastify.css';
       </Form.Group>
       
       <Button variant="primary" type="submit" >
-        Connect
+        Login
       </Button>
     </Form>
     <br></br>
