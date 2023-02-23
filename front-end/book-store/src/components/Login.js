@@ -6,6 +6,9 @@ import '../App.css';
 import {useState} from 'react'
 import userService from "../services/userService";
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -20,29 +23,29 @@ import { useNavigate } from 'react-router-dom';
 
   const loginUser = async (e) => {
     e.preventDefault();
-    console.log(uname,password)
+    
     try{
       const user =await userService.userLogin(uname,password)
-      //console.log(user)
+
       if(user.error){
+
         setErrorMessage(user.error)
+
       }else{
-      //console.log(user.token)
+
+      console.log(user.data.role)
       localStorage.setItem("token",user.token)
       setLoggedIn(true);
-        //localStorage.setItem('user', JSON.stringify(user));*/
-      navig("/PageNotFound")
-      }
-      
+      localStorage.setItem('user', JSON.stringify(user))
+
+      if(user.data.role==="admin"){
+        navig("/admin")
+      }else navig("/user")
+    }
     }catch(error){
       console.log(error)
     }
   }
-
-
-
-
-
 
 
     return(
@@ -51,18 +54,17 @@ import { useNavigate } from 'react-router-dom';
 
         <Form className="login" onSubmit={loginUser}  >
       <Form.Group className="mb-3" >
-        <Form.Label > Username: </Form.Label>
+        <Form.Label className="cred" > Username: </Form.Label>
         <Form.Control type="text"  placeholder="Username" value={uname} onChange={(e)=>setUname(e.target.value)}/>
       </Form.Group>
 
       <Form.Group className="mb-3" >
-        <Form.Label>Password</Form.Label>
+        <Form.Label  className="cred">Password:</Form.Label>
         <Form.Control type="password"  placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />
       </Form.Group>
       
-      
       <Button variant="primary" type="submit" >
-        Enregistrer
+        Connect
       </Button>
     </Form>
     <br></br>

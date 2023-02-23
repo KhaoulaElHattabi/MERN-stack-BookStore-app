@@ -51,7 +51,8 @@ const userLogin=async (req,res)=>{
                 msg: "Login successful...!",
                 username: user.uName,
                 id:user._id,
-                token,
+                role:user.role,
+                token
                 
               });
 
@@ -73,60 +74,20 @@ const userLogin=async (req,res)=>{
         }
     }
 
-/*
-const verifyUser=async(req,res,next)=>{
-    try{
-         const{uName}=req.method=="GET" ? req.query : req.body
-            let exist=await User.findOne({uName})
-            if(!exist)
-        
-                
+
+
+    const deleteUser=async(req,res)=>{
+        try{
+        await userService.deleteUserById(req.params.id)
+            res.status(200).json("User deleted succesfully")
         }catch(error){
-            return res.status(404).send({error:"Authentification error"})
+            res.status(500).json(error)
         }
     }
-      */  
-        
-        
+
+
         
 module.exports={
-    addUser,getUsers,userLogin,getUser
+    addUser,getUsers,userLogin,getUser,deleteUser
     }
 
-
-/*const userLogin=async (req,res)=>{
-    const {usr,password}=req.body
-
-    try{
-      User.findOne({usr})
-          .then(user=>{
-              bcrypt.compare(password,user.password)
-                  .then(passwordCheck=>{
-
-                      if(!passwordCheck) return res.status.send({error: "Password not found"})
-
-                      //jwt token
-                      const token = jwt.sign({
-                                      userId: user._id,
-                                      username:user.uName
-                                  }, 'secret', {expiresIn: "24h"});
-
-                      return res.status(200).send({
-                          msg:"Login successful...!",
-                          username:user.uName,
-                          token
-                      })
-                  })
-                  .catch(error=>{
-                      return res.status(400).send({error: "Password does not match"})
-                  })
-          })
-          .catch(error=> {
-              return res.status(40).send({ error : "Username not found"});
-          
-          })
-    }catch(error){
-      return res.status(500).json(error)
-    }
-
-}*/
