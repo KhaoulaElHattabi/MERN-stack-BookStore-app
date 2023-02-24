@@ -4,8 +4,8 @@ const catalService=require("../services/catalogueServices")
 
 const getBooks=async(req,res)=>{
     try{
-        const book=catalService.getAllBooks()
-        res.status(200).json(book)
+        const books=await catalService.getAllBooks()
+        res.status(200).json(books)
     }catch(error){
         res.status(500).json(error)
     }
@@ -13,8 +13,8 @@ const getBooks=async(req,res)=>{
 
 const getBook=async(req,res)=>{
     try{
-       await catalService.getBookById(req.params.id)
-        res.status(200).json("Book deleted succesfully !")
+        const result = await catalService.getBookById(req.params.id)
+        res.status(200).json(result)
     }catch(error){
         res.status(500).json(error)
     }

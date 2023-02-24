@@ -3,7 +3,7 @@
 
 
  const getAllBooks=async()=>{
-    return await Book.find()
+    return await Book.find().populate("category")
  }
 
  const createBook=async(b)=>{
