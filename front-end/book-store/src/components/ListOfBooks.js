@@ -21,7 +21,6 @@ const ListOfBooks = () => {
   return (
     <>
    <Home/> 
-   <div>List</div>
    <div className="container" style={{marginTop: '20px'}}>
   <div className="row row-cols-1 row-cols-md-3 g-4">
     {books.map((item) => (
