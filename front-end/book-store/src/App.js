@@ -7,18 +7,26 @@ import VisitorHome from './components/VisitorHome';
 import Login from './components/Login';
 import ListOfBooks from './components/ListOfBooks';
 import Navbar from './components/Navbar';
+import Home from './components/Home';
+import AboutUs from './components/AboutUs';
+import withAuth from './components/withAuth'
 
 
 function App() {
+  const ProtectedVisitorHome = withAuth(VisitorHome, ["user"]);
+  const ProtectedAdminHome=withAuth(AdminHome,["admin"])
+
   return (
     <div className="App">
      
       <Routes>
-      <Route path="/" element={<Navigate to="/login"/>}/>
+      <Route path="/" element={<Navigate to="/home"/>}/>
+      <Route path={"/home"} element={<Home/>} />
       <Route path={"/login"} element={<Login/>} />
-      <Route path={"/admin"} element={<AdminHome/>} />
-      <Route path={"/user"} element={<VisitorHome/>} />
-      <Route path={"/ListOfBooks"} element={<ListOfBooks/>} />
+      <Route path={"/admin"} element={<ProtectedAdminHome />} />
+      <Route path={"/user"} element={<ProtectedVisitorHome />} />
+      <Route path={"/list_books"} element={<ListOfBooks/>} />
+      <Route path={"/about_us"} element={<AboutUs/>} />
       <Route path={"*"} element={<PageNotFound/>} />
       </Routes>
 

@@ -67,7 +67,7 @@
   height: 100vh; /* if you don't want it to take up the full screen, reduce this number */
   overflow: hidden;
   background-size: cover !important;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 53%, rgba(0,0,0,0.65) 100%), url(C:\Users\Karim\Desktop\Exam-Node\img1.jpg) no-repeat center center scroll;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 53%, rgba(0,0,0,0.65) 100%), url(./assets/library.jpg) no-repeat center center scroll;
 }
 
 h1 {

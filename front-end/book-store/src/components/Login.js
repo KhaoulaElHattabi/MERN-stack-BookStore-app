@@ -3,11 +3,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import userService from "../services/userService";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,  } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Navbar from "./Navbar";
 
 
 
@@ -21,35 +22,39 @@ import 'react-toastify/dist/ReactToastify.css';
 
   const navig=useNavigate()
 
+
   const loginUser = async (e) => {
     e.preventDefault();
-    
-    try{
-      const user =await userService.userLogin(uname,password)
-
-      if(user.error){
-
-        setErrorMessage(user.error)
-
-      }else{
-
-      console.log(user.data.role)
-      localStorage.setItem("token",user.token)
-      setLoggedIn(true);
-      localStorage.setItem('user', JSON.stringify(user))
-
-      if(user.data.role==="admin"){
-        navig("/admin")
-      }else navig("/user")
+      
+    try {
+      const user = await userService.userLogin(uname, password);
+  
+      if (user.error) {
+        setErrorMessage(user.error);
+      } else {
+        localStorage.setItem("token", user.data.token);
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('role', user.data.role);
+        setLoggedIn(true); 
+        localStorage.setItem('logged', true)
+  
+        if (user.data.role === "admin") {
+          navig("/admin");
+        } else {
+          navig("/user");
+        }
+      }
+    } catch (error) {
+      console.log(error);
     }
-    }catch(error){
-      console.log(error)
-    }
-  }
+  };
+  
+
 
 
     return(
         <>
+
         <h3 className="MarginText">Login</h3>
 
         <Form className="login" onSubmit={loginUser}  >

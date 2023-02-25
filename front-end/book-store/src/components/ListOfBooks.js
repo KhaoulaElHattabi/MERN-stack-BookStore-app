@@ -2,7 +2,8 @@ import React from 'react';
 import  { useEffect, useState } from "react";
 import bookService from '../services/bookService';
 import Navbar from './Navbar';
-import Test from './Test';
+import Home from './Home';
+
 const ListOfBooks = () => {
     const [books, setBooks] = useState([]);
 
@@ -11,15 +12,16 @@ const ListOfBooks = () => {
     
         const result = await bookService.getAllBooks();
         setBooks(result.data);
-        console.log(result)
+        //console.log(result)
       }
       useEffect(() => {
         getBooks();
       }, []);
+
   return (
     <>
-    
-   <Test></Test> 
+   <Home/> 
+   <div>List</div>
    <div className="container" style={{marginTop: '20px'}}>
   <div className="row row-cols-1 row-cols-md-3 g-4">
     {books.map((item) => (
