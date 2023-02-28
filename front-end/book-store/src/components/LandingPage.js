@@ -14,6 +14,7 @@ export default function BasicDemo() {
     const nav=()=>{
         navig("/login");
     }
+    
     const [products, setProducts] = useState([]);
     const [checked, setChecked] = useState([]);
     const responsiveOptions = [
@@ -93,8 +94,8 @@ export default function BasicDemo() {
             <div className="text-6xl text-primary font-bold mb-3">at Literary Corner</div>
             <p className="mt-0 mb-4 text-700 line-height-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-            <Button label="Learn More" type="button" className="mr-3 p-button-raised" />
-            <Button label="Live Demo" type="button" className="p-button-outlined" />
+            <Button label="Get More" type="button" className="mr-3 p-button-raised"  onClick={() => nav()} />
+           
         </section>
     </div>
     <div className="col-12 md:col-6 overflow-hidden">
