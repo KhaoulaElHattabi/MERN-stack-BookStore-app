@@ -65,7 +65,7 @@ if (dataa) {
      <div className="container">
   <nav className="navbar navbar-expand-lg bg-body-tertiary">
     <div className="container-fluid">
-      <a className="navbar-brand"  href={loggedIn && role === "admin" ? "/admin" : "/user"}>Droppify</a>
+      <a className="navbar-brand"  href={loggedIn && role === "admin" ? "/admin" : "/user"}><img src="https://cdn.logo.com/hotlink-ok/logo-social.png"alt="hyper" height={50} className="mb-3" /></a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"/>
       </button>
@@ -74,15 +74,15 @@ if (dataa) {
           <li className="nav-item">
             <a className="nav-link active" aria-current="page" href={loggedIn && role === "admin" ? "/admin" : "/user"}>Home</a>
           </li>
-          <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Categories
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a className="dropdown-item" href="#">Action</a>
+          <a className="dropdown-item" href="#">Another action</a>
+          <div className="dropdown-divider"></div>
+          <a className="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
       <li className="nav-item">

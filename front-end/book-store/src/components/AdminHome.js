@@ -11,7 +11,7 @@ function AdminHome(){
          <Navbar />
          <ListOfBooks />
          
-        <div className="pg-not-fd">Admin Home</div>
+        
        
       </>
     )

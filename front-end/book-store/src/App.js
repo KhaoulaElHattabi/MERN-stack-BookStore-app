@@ -10,8 +10,9 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import AboutUs from './components/AboutUs';
 import withAuth from './components/withAuth'
+import LandingPage from './components/LandingPage';
 
-
+import "primeflex/primeflex.css";
 function App() {
   const ProtectedVisitorHome = withAuth(VisitorHome, ["user"]);
   const ProtectedAdminHome=withAuth(AdminHome,["admin"])
@@ -20,7 +21,8 @@ function App() {
     <div className="App">
      
       <Routes>
-      <Route path="/" element={<Navigate to="/home"/>}/>
+      <Route path={"/store"} element={<LandingPage/>} />
+      <Route path="/" element={<Navigate to="/store"/>}/>
       <Route path={"/home"} element={<Home/>} />
       <Route path={"/login"} element={<Login/>} />
       <Route path={"/admin"} element={<ProtectedAdminHome />} />

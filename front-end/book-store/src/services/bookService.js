@@ -3,6 +3,9 @@ import http from './http-common';
 async function getAllBooks(){
     return await http.get("/books")
 }
+async function getAllCategories(){
+    return await http.get("/categories")
+}
 
 async function getBookById(id){
     return await http.get(`/books/${id}`)
@@ -25,7 +28,8 @@ const bookService = {
     getBookById,
     deleteBook,
     addBook,
-    updateBook
+    updateBook,
+    getAllCategories
 }
 
 export default bookService

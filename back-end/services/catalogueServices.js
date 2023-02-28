@@ -11,7 +11,12 @@
  }
 
  const getBookById=async(id)=>{
-    return await Book.findByIdAndDelete(id)      
+   return await Book.findById(id)
+   .populate({
+     path: "category",
+     select: "name"
+   });
+ 
  }
 
  const updateBook=async(b)=>{
