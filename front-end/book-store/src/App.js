@@ -6,16 +6,17 @@ import AdminHome from './components/AdminHome';
 import VisitorHome from './components/VisitorHome';
 import Login from './components/Login';
 import ListOfBooks from './components/ListOfBooks';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
 import AboutUs from './components/AboutUs';
 import withAuth from './components/withAuth'
 import LandingPage from './components/LandingPage';
+import FormBook from './components/FormBook';
 
 import "primeflex/primeflex.css";
+
 function App() {
   const ProtectedVisitorHome = withAuth(VisitorHome, ["user"]);
   const ProtectedAdminHome=withAuth(AdminHome,["admin"])
+  const ProtectedForm=withAuth(FormBook,["admin"])
 
   return (
     <div className="App">
@@ -23,7 +24,7 @@ function App() {
       <Routes>
       <Route path={"/store"} element={<LandingPage/>} />
       <Route path="/" element={<Navigate to="/store"/>}/>
-      <Route path={"/home"} element={<Home/>} />
+      <Route path={"/book-add"} element={<ProtectedForm/>} />
       <Route path={"/login"} element={<Login/>} />
       <Route path={"/admin"} element={<ProtectedAdminHome />} />
       <Route path={"/user"} element={<ProtectedVisitorHome />} />

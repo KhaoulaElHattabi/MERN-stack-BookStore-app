@@ -14,17 +14,10 @@ function Navbar(){
 
 
   useEffect(() => {
-
-    // Retrieve data from local storage
-
 const dataa = window.localStorage.getItem("user");
-
 if (dataa) {
-
   const parsedData = JSON.parse(dataa);
-  
   var role = parsedData.data.role;
-
   
 } else {
   console.log('Data not found in local storage.');
@@ -38,8 +31,6 @@ if (dataa) {
         setShouldHide(true);
        // console.log("user :"+shouldHide)
       }
-      
-      
   }, []);
   //console.log("final "+shouldHide)
     const nav =useNavigate()

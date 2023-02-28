@@ -12,7 +12,27 @@ import { useNavigate,  } from 'react-router-dom';
 export default function BasicDemo() {
     const navig=useNavigate()
     const nav=()=>{
-        navig("/login");
+        const dataa = window.localStorage.getItem("user");
+        if (dataa) {
+          const parsedData = JSON.parse(dataa);
+          var role = parsedData.data.role;
+          
+        } else {
+          console.log('Data not found in local storage.');
+        } 
+              if (role == "admin"){
+                navig("/admin")
+               // console.log("Admin :"+shouldHide)
+              }
+              else if(role == "user")
+              {
+                navig("/user")
+               // console.log("user :"+shouldHide)
+              }
+              else
+              {
+                navig("/login")
+              }
     }
     
     const [products, setProducts] = useState([]);
@@ -60,7 +80,7 @@ export default function BasicDemo() {
     };
 
     useEffect(() => {
-        //ProductService.getProductsSmall().then((data) => setProducts(data.slice(0, 9)));
+        
     }, []);
 
     const productTemplate = (product) => {

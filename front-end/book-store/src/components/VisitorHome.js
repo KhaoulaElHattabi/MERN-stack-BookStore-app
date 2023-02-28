@@ -14,7 +14,7 @@ function VisitorHome(){
         <>
         <Navbar />
         <ListOfBooks />
-        <div className="pg-not-fd">Visitor Home</div>
+      
         </>
     )
 }

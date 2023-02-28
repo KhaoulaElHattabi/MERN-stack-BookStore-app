@@ -120,3 +120,36 @@ button:focus {
 .p-card {
   height: auto;
 }
+.p-speeddial-button.p-button.p-button-icon-only {
+  width: 2rem;
+  height: 2rem;
+}
+.p-speeddial-button.p-button.p-button-icon-only {
+  color: #ffffff;
+    background: #098191;
+    border: 1px solid #098191;
+}
+
+element.style {
+}
+.p-button.p-button-help:enabled:focus {
+    
+}
+.p-button.p-button-help:enabled:focus, .p-button.p-button-help:not(button):not(a):not(.p-disabled):focus, .p-buttonset.p-button-help > .p-button:enabled:focus, .p-buttonset.p-button-help > .p-button:not(button):not(a):not(.p-disabled):focus, .p-splitbutton.p-button-help > .p-button:enabled:focus, .p-splitbutton.p-button-help > .p-button:not(button):not(a):not(.p-disabled):focus, .p-fileupload-choose.p-button-help:enabled:focus, .p-fileupload-choose.p-button-help:not(button):not(a):not(.p-disabled):focus {
+    box-shadow: 0 0 0 0.2rem #098191;
+}
+.p-button.p-button-help:enabled:hover .p-button.p-button-help, .p-buttonset.p-button-help > .p-button, .p-splitbutton.p-button-help > .p-button, .p-fileupload-choose.p-button-help{
+  color: #ffffff;
+  background: #098191;
+  border: 1px solid #098191;
+}
+/* .p-button:enabled:hover, .p-button:not(button):not(a):not(.p-disabled):hover {
+  background: #098191;
+  color: #ffffff;
+  border-color: #098191;
+} */
+.p-button.p-button-help:enabled:hover, .p-button.p-button-help:not(button):not(a):not(.p-disabled):hover, .p-buttonset.p-button-help > .p-button:enabled:hover, .p-buttonset.p-button-help > .p-button:not(button):not(a):not(.p-disabled):hover, .p-splitbutton.p-button-help > .p-button:enabled:hover, .p-splitbutton.p-button-help > .p-button:not(button):not(a):not(.p-disabled):hover, .p-fileupload-choose.p-button-help:enabled:hover, .p-fileupload-choose.p-button-help:not(button):not(a):not(.p-disabled):hover {
+  background: #098191;
+  color: #098191;
+  border-color: #098191;
+}
