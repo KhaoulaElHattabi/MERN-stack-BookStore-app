@@ -20,5 +20,8 @@ const getUser=async(id)=>{
 const deleteUserById=async(id)=>{
     return await User.findByIdAndDelete(id)
  }
+  
 
 module.exports={createUser,getAlUsers,getUser,deleteUserById}
+
+

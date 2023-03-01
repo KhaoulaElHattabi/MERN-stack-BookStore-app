@@ -27,8 +27,21 @@ async function userLogin(uName, password){
     }
 }
 */
+
+
+async function getAllUsers(){
+    return await http.get("/users/")
+}
+    
+
+async function deleteUser(id){
+    return await http.delete(`/users/${id}`)
+}
+
 const userServices={
-    userLogin
+    userLogin,
+    getAllUsers,
+    deleteUser
 }
 
 export default userServices

@@ -1,5 +1,11 @@
+
 .App {
   text-align: center;
+}
+body {
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .App-logo {
@@ -67,7 +73,7 @@
   height: 100vh; /* if you don't want it to take up the full screen, reduce this number */
   overflow: hidden;
   background-size: cover !important;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 53%, rgba(0,0,0,0.65) 100%), url(./assets/library.jpg) no-repeat center center scroll;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 53%, rgba(0,0,0,0.65) 100%), url(https://www.parliament.uk/contentassets/aa8b9933d3cb4364b827e7a60ea898e0/hl_library_roger-harris2022.jpg) no-repeat center center scroll;
 }
 
 h1 {
@@ -104,5 +110,73 @@ button:focus {
   outline: 1px solid #fff;
   outline-offset: -4px;
 }
+
+
+
+/*NavBar*/
+
+.icon-pl{
+  margin:"5px 30px 0 0 ";
+  font-weight: "bold";
+  border:"1px solid #495057";
+   padding:"8px";
+   border-radius:"5px"
+}
+
+.header{
+  display: flex;
+  justify-content: end;
+  background: #f8f9fa;
+    color: #495057;
+    border: 1px solid #e9ecef;
+    border-width: 1px 0 1px 0;
+    padding: .5rem 1rem;
+    font-weight: 600;
+}
+
+.rows{
+  text-align: left;
+  border: 1px solid #e9ecef;
+  border-width: 0 0 1px 0;
+  padding: 16px;
+  color: #495057
+}
+
+.card{
+  margin-top:50px
+}
+
+.wrapper{
+  overflow:auto
+}
+
+.thed{
+   background: #f8f9fa;
+    color: #495057;
+    border-width: 1px 0 1px 0;
+    text-align: left;
+    font-weight: lighter;
+
+
+}
+
+
+
+.search-container {
+  position: relative;
+}
+
+.search-container input[type="text"] {
+  padding-right: 30px;
+  width: 250px;
+}
+
+.search-container .pi-search {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%) translateX(-50%);
+}
+
 
 
