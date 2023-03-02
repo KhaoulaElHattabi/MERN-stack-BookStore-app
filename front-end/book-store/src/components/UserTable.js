@@ -1,12 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-  import { InputText } from 'primereact/inputtext';
-  import userServices from '../services/userService';
-  import Navbar from './Navbar';
-  import ReactPaginate from 'react-paginate';
-  import { ConfirmDialog } from 'primereact/confirmdialog'; // For <ConfirmDialog /> component
-  import { confirmDialog } from 'primereact/confirmdialog'; // For confirmDialog metho
-  import { Toast } from 'primereact/toast';
-          
+import { useEffect, useState } from 'react';
+import { InputText } from 'primereact/inputtext';
+import userServices from '../services/userService';
+import Navbar from './Navbar';
+import { Paginator } from 'primereact/paginator';
+        
 
 
   export default function TableUsers() {
@@ -121,36 +118,35 @@ import { useEffect, useRef, useState } from 'react';
           );
       };
 
-    return (
-      <>
-      <Navbar/>
-      <Toast ref={toast} />
-       <ConfirmDialog />
-      <div className="card" style={{marginTop:"50px"}}>
-    {renderHeader()}
-    <div className="wrapper">
-      <table className="table">
-        <thead className="thed">
-          <tr>
-            <th style={{ minWidth: "12rem", padding: "15px" }}>First Name</th>
-            <th style={{ minWidth: "12rem", padding: "15px" }}>Last Name</th>
-            <th style={{ minWidth: "12rem", padding: "15px" }}>Username</th>
-            <th style={{ minWidth: "12rem", padding: "15px" }}>Email</th>
-            <th style={{ minWidth: "12rem", padding: "15px" }}>Role</th>
-            <th style={{ minWidth: "12rem", padding: "15px" }}>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredUsers
-            .slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
-            .map((user) => (
-              <tr className="rows" key={user.id}>
-                <td style={{ padding: "14px" }}>{user.fName}</td>
-                <td style={{ padding: "14px" }}>{user.lName}</td>
-                <td style={{ padding: "14px" }}>{user.uName}</td>
-                <td style={{ padding: "14px" }}>{user.email}</td>
-                <td style={{ padding: "14px" }}>{user.role}</td>
-                <td style={{ padding: "14px" }}>
+  return (
+    <>
+    <Navbar/>
+
+      <div className="card" >
+        {renderHeader()}
+        <div className='wrapper'>
+        <table className="table">
+        
+          <thead className='thed'>
+            <tr>
+
+              <th style={{ minWidth: '12rem',padding: '16px' }} >First Name</th>
+              <th style={{ minWidth: '12rem',padding: '16px' }} >Last Name</th>
+              <th style={{ minWidth: '12rem',padding: '16px' }}>Username</th>
+              <th style={{ minWidth: '12rem',padding: '16px' }}>Email</th>
+              <th style={{ minWidth: '12rem',padding: '16px' }} >Role</th>
+              <th style={{ minWidth: '12rem',padding: '16px' }}>Actions</th>
+            </tr>
+          </thead>
+          <tbody >
+            {filteredUsers.map((user) => (
+              <tr className='rows' key={user.id}>
+                <td style={{padding:"16px"}}>{user.fName}</td>
+                <td style={{padding:"16px"}}>{user.lName}</td>
+                <td style={{padding:"16px"}}>{user.uName}</td>
+                <td style={{padding:"16px"}}>{user.email}</td>
+                <td style={{padding:"16px"}}>{user.role}</td>
+                <td style={{padding:"16px"}}>
                   <i
                     className="pi pi-eye"
                     style={{
@@ -175,26 +171,14 @@ import { useEffect, useRef, useState } from 'react';
                 </td>
               </tr>
             ))}
-        </tbody>
-      </table>
-      <ReactPaginate 
-        pageCount={Math.ceil(filteredUsers.length / itemsPerPage)}
-        pageRangeDisplayed={5}
-        marginPagesDisplayed={2}
-        onPageChange={handlePageChange}
-        containerClassName="pagination"
-        activeClassName="active"
-        pageLinkClassName="page-link"
-        previousLinkClassName="page-link"
-        nextLinkClassName="page-link"
-        breakClassName="page-link"
-        disabledClassName="disabled"
+          </tbody>
+        </table>
+      </div>
+      <div className="card">
+            <Paginator first={first} rows={rows} totalRecords={120}  onPageChange={onPageChange} />
+        </div>
+      </div>
+    </>
+  );
+}
 
-        
-      />
-    </div>
-  </div>
-
-      </>
-    );
-  }

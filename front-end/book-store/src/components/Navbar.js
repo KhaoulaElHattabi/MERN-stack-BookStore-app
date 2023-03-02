@@ -88,17 +88,12 @@ if (dataa) {
         
       ]
 
-
-       
-      
-
-    
     return(
         <>
 
 
 <div className="container" style={{borderBottom:"1px solid black"}}>
-  <nav className="navbar navbar-expand-lg bg-body-tertiary"  style={{padding: "11px"}}>
+  <nav className="navbar navbar-expand-lg bg-body-tertiary" >
     <div className="container-fluid">
       <Link className="navbar-brand" to={loggedIn && role === "admin" ? "/admin" : "/user"}>Droppify</Link>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -129,10 +124,9 @@ if (dataa) {
             </li>
           )}
         </ul>
-        <Button  icon="pi pi-search" outlined style={{marginLeft:"2px",borderRadius:"15px",width:"45px"}}  severity="info" aria-label="Search" />
+        <Button  icon="pi pi-search" outlined style={{marginLeft:"2px",borderRadius:"15px",width:"45px",height:"45px"}}  severity="info" aria-label="Search" />
 
-        <Menu model={items.filter(item => !item.hidden)} popup ref={menu} />
-       
+        <Menu model={items} popup ref={menu} />
         <Button  icon="pi pi-user" outlined style={{marginLeft:"10px",borderRadius:"15px",width:"45px"}}  severity="info" aria-label="User" onClick={(e) => menu.current.toggle(e)} />
       </div>
     </div>
