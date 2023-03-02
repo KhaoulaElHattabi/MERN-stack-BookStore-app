@@ -268,19 +268,82 @@ form.reset();
 
   return (
     <>
-   <Home/> 
-   <div>List</div>
-   <div className="container" style={{marginTop: '20px'}}>
-  <div className="row row-cols-1 row-cols-md-3 g-4">
+   <>
+      <div className="container">
+  <section className="masthead" role="img" aria-label="Image Description">
+    <h1>
+      The Book House 
+    </h1>
+    <button className="btn align-self-center" style={{backgroundColor: '#098191', color: 'white'}}onClick={(e) => {scrollToId()}}>Start reading</button>
+  </section>
+  
+</div>
+    </>
+   <div className="grid justify-content-center" style={{ marginLeft:"0px",marginRight:"0px",marginTop:"10px",marginBottom:"10px" }}>
+    <div className="col-12 md:col-6 lg:col-3">
+        <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
+            <div className="flex justify-content-between mb-3">
+                <div>
+                    <span className="block text-500 font-medium mb-3">Books</span>
+                    <div className="text-900 font-medium text-xl">+ {booksNb}</div>
+                </div>
+                <div className="flex align-items-center justify-content-center bg-blue-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
+                    <i className="pi pi-upload text-blue-500 text-xl"></i>
+                </div>
+            </div>
+            <span className="text-green-500 font-medium">{booksNb24} new </span>
+            <span className="text-500">since last day</span>
+        </div>
+    </div>
+    <div className="col-12 md:col-6 lg:col-3">
+        <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
+            <div className="flex justify-content-between mb-3">
+                <div>
+                    <span className="block text-500 font-medium mb-3">Auteur</span>
+                    <div className="text-900 font-medium text-xl">{auteurNb}</div>
+                </div>
+                <div className="flex align-items-center justify-content-center bg-orange-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
+                    <i className="pi pi-user-plus text-orange-500 text-xl"></i>
+                </div>
+            </div>
+            <span className="text-green-500 font-medium">24+ </span>
+            <span className="text-500">since last week</span>
+        </div>
+    </div>
+    <div className="col-12 md:col-6 lg:col-3">
+        <div className="surface-0 shadow-2 p-3 border-1 border-50 border-round">
+            <div className="flex justify-content-between mb-3">
+                <div>
+                    <span className="block text-500 font-medium mb-3">Categories</span>
+                    <div className="text-900 font-medium text-xl">+{catNb}</div>
+                </div>
+                <div className="flex align-items-center justify-content-center bg-cyan-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
+                    <i className="pi pi-align-justify text-cyan-500 text-xl"></i>
+                </div>
+            </div>
+            <span className="text-green-500 font-medium">7  </span>
+            <span className="text-500">newly registered</span>
+        </div>
+    </div>
+    
+</div>
+   <p>{books.data}</p>
+   <div id='go' className="container" style={{marginTop: '20px'}}>
+   {/* <div className="card flex justify-content-center"style={{marginTop: '20px',maxWidth:"100px",margin:"auto"}}>
+
+            <Button label=" Ajouter"onClick={() => {go()}}></Button>
+        </div> */}
+  <div className="row row-cols-1 row-cols-md-3 g-20">
+    
     {books.map((item) => (
       
       <div className="col mb-4" key={item._id} style={{flexBasis:"auto"}}>
         
         <div className="card h-100 ">
         {shouldHide ? null : (
-          <div className={`nav-item ${true ? "disabled" : ""}`} >
+         
             
-          <div className="card">
+          <div className="card" style={{borderWidth: '0px'}}>
             
                 <Toast ref={toastt} />
                 <SpeedDial model={itemss} radius={120} type="quarter-circle" direction="up-left" style={{ right: 6, bottom: -33,width: "4rem", 
@@ -292,7 +355,7 @@ form.reset();
                 
             
         </div>
-          </div>
+        
           )}
         
         

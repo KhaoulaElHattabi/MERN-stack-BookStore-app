@@ -1,5 +1,5 @@
 
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect,useRef  } from "react";
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import Navbar from './Navbar';
@@ -7,7 +7,21 @@ import { Calendar } from 'primereact/calendar';
 import { Dropdown } from 'primereact/dropdown';
 import bookService from "../services/bookService";
 import { useNavigate, } from 'react-router-dom';
+import FileBase64 from 'react-file-base64';
+import { Toast } from 'primereact/toast';
+import { FileUpload } from 'primereact/fileupload';
 const FormBook = () =>{
+  const toast = useRef(null);
+
+    const onUpload = (file) => {
+      setBase64String(file.base64);
+        toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
+    };
+  const [base64String, setBase64String] = useState('');
+
+  const handleFileUpload = (file) => {
+    setBase64String(file.base64);
+  };
  
     const navigate=useNavigate();
     const [name, setName] = useState("");
@@ -49,7 +63,7 @@ const FormBook = () =>{
               "auteur": auteur,
               "date_publication": date_publication,
               "editeur": editeur,
-              "image": image,
+              "image": base64String,
               "category":cat[selectedCat]}
             await  bookService.addBook(p);  
             navigate("/admin")
@@ -122,7 +136,7 @@ form.reset();
         </div>
     </div>
 </div> */}
-<form onSubmit={(event)=>submitBook(event)} className="row g-3 needs-validation" noValidate style={{maxHeight: "300px", maxWidth:"1000px", margin:"auto", marginTop:"20px", paddingTop:"20px", border:"none"}}>
+<form onSubmit={(event)=>submitBook(event)} className="row g-3 needs-validation" noValidate style={{maxHeight: "300px", maxWidth:"1000px", marginLeft:"auto",marginRight:"20px", marginTop:"20px", paddingTop:"20px", border:"none"}}>
         <div className="col-md-4">
           <label htmlFor="validationCustom01" className="form-label">Name</label>
           <input type="text" className="form-control" id="validationCustom01"  required  onChange={event => setName(event.target.value)}/>
@@ -184,7 +198,14 @@ form.reset();
         </div>
         <div className="col-md-12">
           <label htmlFor="validationCustom03" className="form-label">Image</label>
-          <input type="text" className="form-control" id="validationCustom03" required onChange={event => setImage(event.target.value)}/>
+          <div className="form-control">
+          <FileBase64
+        
+        multiple={false}
+        onDone={handleFileUpload}
+      /></div>
+       
+     
           <div className="invalid-feedback">
             Please provide a valid city.
           </div>
@@ -194,7 +215,13 @@ form.reset();
         Submit
       </Button>
         </div>
+        
+        
       </form>
+      <div style={{maxHeight: "300px", maxWidth:"1000px",  marginTop:"20px", paddingTop:"20px", border:"none"}}>
+
+        <img src={base64String} className="card-img-top p-2 d-flex  " alt="book cover" style={{maxHeight: "250px",maxWidth:"125px"}} />
+        </div>
         </>
         
     )

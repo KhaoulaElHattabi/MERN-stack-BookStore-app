@@ -48,7 +48,9 @@ if (dataa) {
   }, []);
   //console.log("final "+shouldHide)
     const nav =useNavigate()
-
+    function go(){
+      nav("/book-add")
+    }
     
    
 
@@ -59,16 +61,23 @@ if (dataa) {
       localStorage.removeItem('user')
       localStorage.removeItem('role')
       localStorage.removeItem('logged')
-        nav("/login")
+        nav("/store")
       }
 
 
       let items = [
         { label: 'Profile', icon: 'pi pi-fw pi-user' },
-        { label: 'Update', icon: 'pi pi-refresh',
+        { label: 'Add Book', icon: 'pi pi-refresh',
         command: () => {
+          if (role == "admin"){
+          
+           go();
+          }
+          
+          
             
-        }
+        },hidden: shouldHide
+        
       },
         { label: 'Log Out', icon: PrimeIcons.SIGN_OUT,
         command: () => {
@@ -122,7 +131,8 @@ if (dataa) {
         </ul>
         <Button  icon="pi pi-search" outlined style={{marginLeft:"2px",borderRadius:"15px",width:"45px"}}  severity="info" aria-label="Search" />
 
-        <Menu model={items} popup ref={menu} />
+        <Menu model={items.filter(item => !item.hidden)} popup ref={menu} />
+       
         <Button  icon="pi pi-user" outlined style={{marginLeft:"10px",borderRadius:"15px",width:"45px"}}  severity="info" aria-label="User" onClick={(e) => menu.current.toggle(e)} />
       </div>
     </div>

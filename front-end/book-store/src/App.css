@@ -143,7 +143,7 @@ button:focus {
 }
 
 .card{
-  margin-top:50px
+  --bs-card-border-width: 0.1px;
 }
 
 .wrapper{
@@ -177,6 +177,59 @@ button:focus {
   right: 10px;
   transform: translateY(-50%) translateX(-50%);
 }
+.custom-file-input input[type="file"] {
+  /* Your custom styles here */
+  
+  padding: 8px;
+  font-size: 18px;
+}
+
+.custom-file-input input[type="file"]:focus {
+  /* Your custom styles here */
+  border-color: green;
+  outline: none;
+}
 
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
 
+.pagination li {
+  list-style: none;
+  margin-right: 0.44rem;
+}
+
+.pagination li a,
+.pagination li span {
+
+  padding: 0.3rem 0.75rem;
+  color: #333;
+  font-size: 1rem;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.pagination li.active a {
+  color: #fff;
+  background-color: #363c42;
+  border-color: #363c42;
+}
+
+.pagination li.disabled span {
+  color: #ccc;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+  cursor: not-allowed;
+}
+
+
+.container{
+  width: 100%;
+}

@@ -1,0 +1,120 @@
+[33mcommit 93fb3e7a9147d87909f9ca60799da8c9d745e7c9[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: f34be4d e970950
+Author: Khaoula ElHattabi <khaoulaelhattabi@gmail.com>
+Date:   Wed Mar 1 01:56:49 2023 +0100
+
+    List Users
+
+[33mcommit e9709506aad67bbdb08dca2f96e555b7f1fcb3c9[m
+Author: karim bouaddi <karimbouaddi380@gmail.com>
+Date:   Tue Feb 28 17:29:32 2023 +0100
+
+    last work karim 28-02-2023 17:29
+
+[33mcommit 525a4cdeae81f20a30d2bd48d44acb86fc76c48b[m
+Author: karim bouaddi <karimbouaddi380@gmail.com>
+Date:   Tue Feb 28 05:06:00 2023 +0100
+
+    LandingPage + ListOfBooks
+
+[33mcommit c821244966aa6cd20be2d1e31d0352f7c53d98d1[m
+Author: karim bouaddi <karimbouaddi380@gmail.com>
+Date:   Tue Feb 28 05:03:12 2023 +0100
+
+    LandingPage + ListOfBooks
+
+[33mcommit f34be4d12e69b7228270a4659f16d312fbbde006[m
+Author: Khaoula ElHattabi <khaoulaelhattabi@gmail.com>
+Date:   Sun Feb 26 00:39:09 2023 +0100
+
+    Fix acces to other routes
+
+[33mcommit 1b43853f6096cf4fcdbfdeec4a7673a39960366a[m
+Author: Khaoula ElHattabi <khaoulaelhattabi@gmail.com>
+Date:   Sat Feb 25 01:12:21 2023 +0100
+
+    Fix protected routes and access :wrench:
+
+[33mcommit abf8d6f24723f43eacc4912006c9c6a095feaa3b[m
+Author: karim bouaddi <karimbouaddi380@gmail.com>
+Date:   Fri Feb 24 14:58:26 2023 +0100
+
+    Creation of Landing Page
+
+[33mcommit 994a992131acd18468fe627748e42a8f97969c42[m
+Author: Khaoula ElHattabi <khaoulaelhattabi@gmail.com>
+Date:   Thu Feb 23 20:48:00 2023 +0100
+
+    Create logout button
+
+[33mcommit 9cc1b89ccd8f9232994e3c2a6069ff79ac06390b[m
+Author: Khaoula ElHattabi <khaoulaelhattabi@gmail.com>
+Date:   Thu Feb 23 02:05:05 2023 +0100
+
+    Manage user and admin interfaces
+
+[33mcommit 03e82b5c578a932ed678e54002541cd3b802c044[m
+Author: Khaoula ElHattabi <khaoulaelhattabi@gmail.com>
+Date:   Wed Feb 22 22:44:41 2023 +0100
+
+    Fix authentification cases issue :lock:
+
+[33mcommit 070e936a00bb52d4d79646bfaabcaa20f250399e[m
+Author: Khaoula ElHattabi <khaoulaelhattabi@gmail.com>
+Date:   Wed Feb 22 21:09:56 2023 +0100
+
+    Implement user authentification :lock:
+
+[33mcommit b8e8672e488c498556f4726bda28537b7ab17f00[m
+Author: Khaoula ElHattabi <khaoulaelhattabi@gmail.com>
+Date:   Wed Feb 22 04:59:13 2023 +0100
+
+    Create JWT to login :closed_lock_with_key:
+
+[33mcommit 770987206d870a7fbf39a950125e7afedb193a71[m
+Author: Khaoula ElHattabi <khaoulaelhattabi@gmail.com>
+Date:   Tue Feb 21 06:07:40 2023 +0100
+
+    Khaoula 21-02-2023: add User model and it endpoints :white_check_mark:
+
+[33mcommit dd85572a16468cc8ee7e39907508e2c67a30a188[m
+Author: Khaoula ElHattabi <khaoulaelhattabi@gmail.com>
+Date:   Sat Feb 18 14:12:12 2023 +0100
+
+    Khaoula 18-02-2023 : Fix database connection issue :card_file_box:
+
+[33mcommit a9dd636ea9268ad507ee77226431e339eab19f63[m
+Author: Khaoula El Hattabi <92638641+KhaoulaElHattabi@users.noreply.github.com>
+Date:   Mon Feb 6 19:53:02 2023 +0100
+
+    Create README.md
+
+[33mcommit 5123fc35fc5a5477efd306e95e36aa16d6e9e235[m
+Author: karim bouaddi <karimbouaddi380@gmail.com>
+Date:   Tue Jan 31 19:17:07 2023 +0100
+
+    Karim 31-01-2023 creation des routers
+
+[33mcommit 9e466082412d2e26bb72acb58f17e78ff205720d[m
+Author: Khaoula ElHattabi <khaoulaelhattabi@gmail.com>
+Date:   Sun Jan 29 15:41:01 2023 +0100
+
+    Khaoula 29-01-2023: Creation des modeles, des controlleurs et les services
+
+[33mcommit 768536b6644ee46a95840479fe19a1e2bcdfa57f[m
+Author: Khaoula ElHattabi <khaoulaelhattabi@gmail.com>
+Date:   Sat Jan 28 22:08:24 2023 +0100
+
+    Khaoula 28-01-2023: creation des dossiers frontend et backend
+
+[33mcommit 3c7de9d2dae8c4f5e379d99aa971c1c2e6ab90fd[m
+Author: Khaoula El Hattabi <92638641+KhaoulaElHattabi@users.noreply.github.com>
+Date:   Sat Jan 28 20:55:59 2023 +0100
+
+    Update README.md
+
+[33mcommit d8874ae896a3431b5d96e2e2eaf77b24b1731f27[m
+Author: Khaoula El Hattabi <92638641+KhaoulaElHattabi@users.noreply.github.com>
+Date:   Sat Jan 21 23:11:34 2023 +0100
+
+    Initial commit
