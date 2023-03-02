@@ -1,9 +1,13 @@
-import { useEffect, useState } from 'react';
-import { InputText } from 'primereact/inputtext';
-import userServices from '../services/userService';
-import Navbar from './Navbar';
-import { Paginator } from 'primereact/paginator';
-        
+import { useEffect, useRef, useState } from 'react';
+  import { InputText } from 'primereact/inputtext';
+  import userServices from '../services/userService';
+  import Navbar from './Navbar';
+  import ReactPaginate from 'react-paginate';
+  import { ConfirmDialog } from 'primereact/confirmdialog'; // For <ConfirmDialog /> component
+  import { confirmDialog } from 'primereact/confirmdialog'; // For confirmDialog metho
+  import { Toast } from 'primereact/toast';
+  import { ProgressSpinner } from 'primereact/progressspinner';
+
 
 
   export default function TableUsers() {
@@ -13,7 +17,15 @@ import { Paginator } from 'primereact/paginator';
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(0);
 
-    const itemsPerPage = 6;
+
+
+    //delete confirm dialog
+    const handleDelete = async (id) => {
+      await userServices.deleteUser(id);
+      const res = await userServices.getAllUsers();
+      setUsers(res.data);
+      setFilteredUsers(res.data);
+    };
 
     const toast = useRef(null);
 
@@ -39,26 +51,16 @@ import { Paginator } from 'primereact/paginator';
   };
 
 
-
+    //pagination
+    const itemsPerPage = 6;
 
     const handlePageChange = ({ selected: selectedPage }) => {
       setCurrentPage(selectedPage);
     };
     
 
-    async function fetchData() {
-      const res = await userServices.getAllUsers();
-      setUsers(res.data);
-      setFilteredUsers(res.data);
-    }
 
-
-    useEffect(() => {
-      
-      fetchData();
-      setLoading(false);
-    }, []);
-
+      //Filters
     const onGlobalFilterChange = (e) => {
       const value = e.target.value;
       setGlobalFilterValue(value);
@@ -79,20 +81,34 @@ import { Paginator } from 'primereact/paginator';
       }
     };
 
+    //reload
     const handleReload = async () => {
+      setLoading(true);
       const res = await userServices.getAllUsers();
       setUsers(res.data);
       setFilteredUsers(res.data);
       setGlobalFilterValue('');
+      setLoading(false);
     };
 
 
-    const handleDelete = async (id) => {
-      await userServices.deleteUser(id);
+
+
+    async function fetchData() {
       const res = await userServices.getAllUsers();
       setUsers(res.data);
       setFilteredUsers(res.data);
-    };
+    }
+
+    useEffect(() => {
+      setLoading(true);
+      fetchData();
+      setLoading(false);
+    }, []);
+
+
+
+
 
     const renderHeader = () => {
       return (
@@ -118,42 +134,60 @@ import { Paginator } from 'primereact/paginator';
           );
       };
 
-  return (
-    <>
-    <Navbar/>
+    return (
+      <>
+      <Navbar/>
+      <Toast ref={toast} />
+       <ConfirmDialog />
 
-      <div className="card" >
-        {renderHeader()}
-        <div className='wrapper'>
-        <table className="table">
-        
-          <thead className='thed'>
-            <tr>
-
-              <th style={{ minWidth: '12rem',padding: '16px' }} >First Name</th>
-              <th style={{ minWidth: '12rem',padding: '16px' }} >Last Name</th>
-              <th style={{ minWidth: '12rem',padding: '16px' }}>Username</th>
-              <th style={{ minWidth: '12rem',padding: '16px' }}>Email</th>
-              <th style={{ minWidth: '12rem',padding: '16px' }} >Role</th>
-              <th style={{ minWidth: '12rem',padding: '16px' }}>Actions</th>
-            </tr>
-          </thead>
-          <tbody >
-            {filteredUsers.map((user) => (
-              <tr className='rows' key={user.id}>
-                <td style={{padding:"16px"}}>{user.fName}</td>
-                <td style={{padding:"16px"}}>{user.lName}</td>
-                <td style={{padding:"16px"}}>{user.uName}</td>
-                <td style={{padding:"16px"}}>{user.email}</td>
-                <td style={{padding:"16px"}}>{user.role}</td>
-                <td style={{padding:"16px"}}>
+       {loading ? (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <ProgressSpinner style={{ width: '50px', height: '50px' }} />
+      </div>
+    ) :
+      <div className="card">
+    {renderHeader()}
+    <div className="wrapper">
+      <table className="table">
+        <thead className="thed">
+          <tr>
+            <th style={{ minWidth: "12rem", padding: "15px" }}>First Name</th>
+            <th style={{ minWidth: "12rem", padding: "15px" }}>Last Name</th>
+            <th style={{ minWidth: "12rem", padding: "15px" }}>Username</th>
+            <th style={{ minWidth: "12rem", padding: "15px" }}>Email</th>
+            <th style={{ minWidth: "12rem", padding: "15px" }}>Role</th>
+            <th style={{ minWidth: "12rem", padding: "15px" }}>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredUsers
+            .slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
+            .map((user) => (
+              <tr className="rows" key={user.id}>
+                <td style={{ padding: "14px" }}>{user.fName}</td>
+                <td style={{ padding: "14px" }}>{user.lName}</td>
+                <td style={{ padding: "14px" }}>{user.uName}</td>
+                <td style={{ padding: "14px" }}>{user.email}</td>
+                <td style={{ padding: "14px" }}>{user.role}</td>
+                <td style={{ padding: "14px" }}>
+                <i
+                    className="pi pi-pencil"
+                    style={{
+                      color: "#708090",
+                      marginRight: "8px",
+                      tabSize: "18px",
+                      fontSize: "18px",
+                      cursor: "pointer",
+                    }}
+                   
+                  />
                   <i
                     className="pi pi-eye"
                     style={{
                       color: "#708090",
-                      marginRight: "15px",
+                      marginRight: "8px",
                       tabSize: "18px",
-                      fontSize: "20px",
+                      fontSize: "18px",
                       cursor: "pointer",
                     }}
                   ></i>
@@ -161,24 +195,38 @@ import { Paginator } from 'primereact/paginator';
                     className="pi pi-trash"
                     style={{
                       color: "#708090",
-                      marginRight: "15px",
+                      marginRight: "8px",
                       tabSize: "18px",
-                      fontSize: "20px",
+                      fontSize: "18px",
                       cursor: "pointer",
                     }}
                     onClick={() => confirmDelete(user._id)}
                   />
+                  
                 </td>
               </tr>
             ))}
-          </tbody>
-        </table>
-      </div>
-      <div className="card">
-            <Paginator first={first} rows={rows} totalRecords={120}  onPageChange={onPageChange} />
-        </div>
-      </div>
-    </>
-  );
-}
+        </tbody>
+      </table>
+      <ReactPaginate 
+        pageCount={Math.ceil(filteredUsers.length / itemsPerPage)}
+        pageRangeDisplayed={5}
+        marginPagesDisplayed={2}
+        onPageChange={handlePageChange}
+        containerClassName="pagination"
+        activeClassName="active"
+        pageLinkClassName="page-link"
+        previousLinkClassName="page-link"
+        nextLinkClassName="page-link"
+        breakClassName="page-link"
+        disabledClassName="disabled"
+
+        
+      />
+    </div>
+  </div>
+  }
+      </>
+    );
+  }
 
