@@ -7,15 +7,24 @@ import { useEffect, useRef, useState } from 'react';
   import { confirmDialog } from 'primereact/confirmdialog'; // For confirmDialog metho
   import { Toast } from 'primereact/toast';
   import { ProgressSpinner } from 'primereact/progressspinner';
-
+import { useNavigate } from 'react-router-dom';
+import { Button } from 'primereact/button';
+import { Dialog } from 'primereact/dialog';
+import FormUser from './FormUser';
 
 
   export default function TableUsers() {
+    function handleCountChange() {
+      fetchData();
+      setVisible(!visible);
+    }
+    const [visible, setVisible] = useState(false);
     const [users, setUsers] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [globalFilterValue, setGlobalFilterValue] = useState('');
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(0);
+    const navig = useNavigate();
 
 
 
@@ -32,6 +41,9 @@ import { useEffect, useRef, useState } from 'react';
 
       const accept = () => {
         toast.current.show({ severity: 'info', summary: 'Confirmed', detail: 'You have acceaccpted',life: 3000 });
+    }
+    const go= ()=>{
+      navig("/user-add")
     }
 
     const reject = () => {
@@ -117,7 +129,7 @@ import { useEffect, useRef, useState } from 'react';
 
                   <i className="pi pi-refresh pi-outlined " style={{margin:"0px 20px 0 0 ",border:"1px solid #ced4da", padding:"0.7rem",borderRadius:"15px",fontSize: "1rem", cursor: "pointer"}}  onClick={handleReload}   />
 
-                  <i className="pi pi-plus pi-outlined " style={{margin:"0px 25px 0 0 ",border:"1px solid #ced4da", padding:"0.7rem",borderRadius:"15px",fontSize: "1rem", cursor: "pointer"}}  />
+                  <i className="pi pi-plus pi-outlined " style={{margin:"0px 25px 0 0 ",border:"1px solid #ced4da", padding:"0.7rem",borderRadius:"15px",fontSize: "1rem", cursor: "pointer"}} onClick={() => setVisible(true)} />
                   
                   </div>
                   <span class="search-container">
@@ -136,6 +148,12 @@ import { useEffect, useRef, useState } from 'react';
 
     return (
       <>
+      <div className="card flex justify-content-center">
+            
+            <Dialog header="Header" visible={visible} style={{ width: '50vw' }} onHide={() => setVisible(false)}>
+                <FormUser isToggled={visible} toggle={handleCountChange}></FormUser>
+            </Dialog>
+        </div>
       <Navbar/>
       <Toast ref={toast} />
        <ConfirmDialog />

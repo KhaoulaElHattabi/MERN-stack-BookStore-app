@@ -14,11 +14,13 @@ import UserTable from './components/UserTable'
 
 
 import "primeflex/primeflex.css";
+import FormUser from './components/FormUser';
 
 function App() {
   const ProtectedVisitorHome = withAuth(VisitorHome, ["user"]);
   const ProtectedAdminHome=withAuth(AdminHome,["admin"])
-  const ProtectedForm=withAuth(FormBook,["admin"])
+  const ProtectedFormBook=withAuth(FormBook,["admin"])
+  const ProtectedFormUser=withAuth(FormUser,["admin"])
   const ProtectedListUsr=withAuth(UserTable,["admin"])
 
 
@@ -29,7 +31,8 @@ function App() {
       <Routes>
       <Route path={"/store"} element={<LandingPage/>} />
       <Route path="/" element={<Navigate to="/store"/>}/>
-      <Route path={"/book-add"} element={<ProtectedForm/>} />
+      <Route path={"/book-add"} element={<ProtectedFormBook/>} />
+      <Route path={"/user-add"} element={<ProtectedFormUser/>} />
       <Route path={"/login"} element={<Login/>} />
       <Route path={"/admin"} element={<ProtectedAdminHome />} />
       <Route path={"/user"} element={<ProtectedVisitorHome />} />

@@ -80,63 +80,7 @@ form.reset();
         <h2 style={{ paddingTop:"20px", border:"none"}}>
       Add Book
     </h2>
-        {/* <div className="card" style={{maxHeight: "300px", maxWidth:"1000px", margin:"auto", marginTop:"20px", paddingTop:"20px", border:"none"}}>
-    <div className="flex flex-wrap gap-3 mb-4">
-        <div className="flex-auto">
-            <label htmlFor="alphanumeric" className="font-bold block mb-2">
-                Name
-            </label>
-            <InputText id="alphanumeric" keyfilter="alphanum" className="w-full" />
-        </div>
-        <div className="flex-auto">
-            <label htmlFor="alphanumeric" className="font-bold block mb-2">
-                Description
-            </label>
-            <InputText id="alphanumeric" keyfilter="alphanum" className="w-full" />
-        </div>
-        <div className="flex-auto">
-            <div className="card flex justify-content-center" style={{border:"none"}}>
-                <label htmlFor="data" className="font-bold block mb-2">
-                    Date de publication
-                </label>
-                <Calendar value={date} onChange={(e) => setDate(e.value)}  />
-            </div>
-        </div>
-    </div>
-    <div className="flex flex-wrap gap-3">
-        <div className="flex-auto">
-            <label htmlFor="alphanumeric" className="font-bold block mb-2">
-                Auteur
-            </label>
-            <InputText id="alphanumeric" keyfilter="alphanum" className="w-full" />
-        </div>
-        <div className="flex-auto">
-            <label htmlFor="alphanumeric" className="font-bold block mb-2">
-                Categories
-            </label>
-            <Dropdown value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cat} optionLabel="name" 
-                placeholder="Select a City" className="w-full flex-auto mb-2" />
-        </div>
-        <div className="flex-auto">
-            <label htmlFor="alphanumeric" className="font-bold block mb-2">
-                Editeur
-            </label>
-            <InputText id="alphanumeric" keyfilter="alphanum" className="w-full" />
-        </div>
-        <div className="flex-auto">
-            <label htmlFor="alphanumeric" className="font-bold block mb-2">
-                Image
-            </label>
-            <InputText id="alphanumeric" keyfilter="alphanum" className="w-full" />
-        </div>
-    </div>
-    <div className="flex flex-wrap gap-3 justify-content-center">
-        <div className="card flex flex-wrap justify-content-center gap-3">
-            <Button label="Submit" icon="pi pi-check" loading={loading} onClick={load} />
-        </div>
-    </div>
-</div> */}
-<form onSubmit={(event)=>submitBook(event)} className="row g-3 needs-validation" noValidate style={{maxHeight: "300px", maxWidth:"1000px", marginLeft:"auto",marginRight:"20px", marginTop:"20px", paddingTop:"20px", border:"none"}}>
+<form onSubmit={(event)=>submitBook(event)} className="row g-3 needs-validation" noValidate style={{maxHeight: "300px", maxWidth:"1000px", margin:"auto",marginTop:"20px", paddingTop:"20px", border:"none"}}>
         <div className="col-md-4">
           <label htmlFor="validationCustom01" className="form-label">Name</label>
           <input type="text" className="form-control" id="validationCustom01"  required  onChange={event => setName(event.target.value)}/>
