@@ -89,9 +89,12 @@ const UpdateProfile = (props) =>{
     return(
         <>
         <Navbar/>
-        <h2 style={{ paddingTop:"20px", border:"none"}}>
-      Update Profile
-    </h2>
+        <div style={{ display: "flex", alignItems: "center" ,textAlign: "center",justifyContent:"center",marginTop:"20px"}}>
+        <h3 style={{ margin: "0", paddingRight: "20px" }}>Update User</h3>
+        <div style={{ width: "50px", height: "50px", borderRadius: "40%", overflow: "hidden", marginRight: "20px" }}>
+        <img src={base64String}  style={{ width: "100%", height: "100%" }} />
+        </div>
+       </div>
         
 <form onSubmit={(event)=>submitUser(event)}  className="row g-3 needs-validation" noValidate style={{maxHeight: "300px", maxWidth:"1000px", margin:"auto",marginTop:"20px", paddingTop:"20px", border:"none"}}>
         <div className="col-md-4">
