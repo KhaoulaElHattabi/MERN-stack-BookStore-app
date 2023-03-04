@@ -11,6 +11,7 @@ router.route("/").get(userController.getUsers)
 router.route('/login').post(userController.userLogin)
 
 
-router.route("/:id").get(userController.getUser).delete(userController.deleteUser)
+router.route("/:id").get(userController.getUser).delete(userController.deleteUser).put(userController.updateUser)
+router.route("/:id/").put(userController.updateUserMP)
 
 module.exports=router

@@ -38,7 +38,7 @@ const FormBook = () =>{
         const result = await bookService.getAllCategories();
        
         setCat(result.data)
-        console.log(result.data)
+        //console.log(result.data)
     }
     useEffect(() => {
         getAllCategories();

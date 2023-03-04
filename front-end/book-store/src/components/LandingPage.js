@@ -22,7 +22,7 @@ export default function BasicDemo() {
           var role = parsedData.data.role;
           
         } else {
-          console.log('Data not found in local storage.');
+          //console.log('Data not found in local storage.');
         } 
               if (role == "admin"){
                 navig("/admin")
