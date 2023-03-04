@@ -87,7 +87,7 @@ const UpdateProfile = (props) =>{
         </div>
         <div className="col-5">
           <label htmlFor="validationCustom03" className="form-label">Password</label>
-          <input type="password" className="form-control" id="validationCustom03" />
+          <input type="password" className="form-control" id="validationCustom03"  />
           <div className="invalid-feedback">
             Please provide a valid city.
           </div>

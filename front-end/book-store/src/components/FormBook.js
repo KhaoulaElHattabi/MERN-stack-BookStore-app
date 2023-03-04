@@ -14,7 +14,7 @@ const FormBook = () =>{
   const toast = useRef(null);
 
     const onUpload = (file) => {
-      setBase64Stimagering(file.base64);
+      setBase64String(file.base64);
         toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
     };
   const [base64String, setBase64String] = useState('');

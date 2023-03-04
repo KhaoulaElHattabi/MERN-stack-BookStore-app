@@ -43,7 +43,7 @@ const FormUser = (props) =>{
     const [fName, setFName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [password1, setPassword1] = useState();
+    const [password1, setPassword1] = useState("");
     const [id, setId] = useState(props.value);
     const [image, setImage] = useState("");
     const [chosen, setChosen] = useState();
@@ -161,7 +161,7 @@ const FormUser = (props) =>{
                //console.log("Update done")
               }
               
-              
+
             }
             else{
               setButton("Submit")
