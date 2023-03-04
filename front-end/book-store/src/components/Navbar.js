@@ -64,12 +64,18 @@ if (dataa) {
     function go(){
       nav("/book-add")
     }
+
+    const n =useNavigate()
+    function goto(){
+      nav("/profile")
+    }
+
     async function getUser(id)
     {
       const resul = await userServices.getUserById(id)
       setUser(resul.data)
       setImage(resul.data.image)
-      console.log(resul.data)
+      //console.log(resul.data)
       
 
     }
@@ -95,16 +101,16 @@ if (dataa) {
 
 
       let items = [
-        { label: 'Profile', icon: 'pi pi-fw pi-user' },
+        { label: 'Profile', icon: 'pi pi-fw pi-user' ,
+        command:()=>{
+          goto();
+        }
+      },
         { label: 'Add Book', icon: 'pi pi-refresh',
         command: () => {
           if (role == "admin"){
-          
            go();
           }
-          
-          
-            
         },hidden: shouldHide
         
       },

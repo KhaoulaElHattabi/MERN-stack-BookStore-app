@@ -84,7 +84,7 @@ import FormUser from './FormUser';
 
 
     //pagination
-    const itemsPerPage = 6;
+    const itemsPerPage = 5;
 
     const handlePageChange = ({ selected: selectedPage }) => {
       setCurrentPage(selectedPage);

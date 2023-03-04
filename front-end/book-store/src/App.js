@@ -15,6 +15,7 @@ import UserTable from './components/UserTable'
 
 import "primeflex/primeflex.css";
 import FormUser from './components/FormUser';
+import UpdateProfile from './components/UpdateProfile';
 
 function App() {
   const ProtectedVisitorHome = withAuth(VisitorHome, ["user"]);
@@ -22,6 +23,8 @@ function App() {
   const ProtectedFormBook=withAuth(FormBook,["admin"])
   const ProtectedFormUser=withAuth(FormUser,["admin"])
   const ProtectedListUsr=withAuth(UserTable,["admin"])
+  const ProtectedProfile=withAuth(UpdateProfile,["admin","user"])
+
 
 
 
@@ -38,7 +41,9 @@ function App() {
       <Route path={"/user"} element={<ProtectedVisitorHome />} />
       <Route path={"/list_books"} element={<ListOfBooks/>} />
       <Route path={"/about_us"} element={<AboutUs/>} />
+      <Route path={"/profile"} element={<ProtectedProfile/>} />
       <Route path={"/users"} element={<ProtectedListUsr/>} />
+
       <Route path={"*"} element={<PageNotFound/>} />
       </Routes>
 

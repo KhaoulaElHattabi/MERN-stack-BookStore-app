@@ -360,7 +360,8 @@ form.reset();
         
         
 
-          <img src={item.image} className="card-img-top p-2 d-flex justify-content-center " alt="book cover" style={{maxHeight: "300px",maxWidth:"200px",margin:"auto"}} />
+          <img src={item.image} className="card-img-top p-2 d-flex 
+          r " alt="book cover" style={{maxHeight: "300px",maxWidth:"200px",margin:"auto"}} />
           <div className="card-body d-flex justify-content-center flex-column">
             <h5 className="card-title">{item.name}</h5>
             <h6 className="card-title">{item.category.name}</h6>
