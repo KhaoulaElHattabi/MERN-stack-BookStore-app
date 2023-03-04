@@ -84,10 +84,26 @@ const userLogin=async (req,res)=>{
             res.status(500).json(error)
         }
     }
-
+    const updateUser=async(req,res)=>{
+        try{
+        await userService.updateUser(req.body)
+            res.status(200).json("User update succesfully")
+        }catch(error){
+            res.status(500).json(error)
+        }
+    }
+    const updateUserMP=async(req,res)=>{
+        try{
+        await userService.updateUser(req.body)
+            res.status(200).json("User update succesfully")
+        }catch(error){
+            res.status(500).json(error)
+        }
+    }
+    
 
         
 module.exports={
-    addUser,getUsers,userLogin,getUser,deleteUser
+    addUser,getUsers,userLogin,getUser,deleteUser,updateUser,updateUserMP
     }
 

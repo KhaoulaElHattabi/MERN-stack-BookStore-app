@@ -43,13 +43,22 @@ async function getUserById(id){
 async function deleteUser(id){
     return await http.delete(`/users/${id}`)
 }
+async function updateUser(user){
+    return await http.put(`/users/${user._id}`, user)
+}
+async function updateUserMP(user){
+    return await http.put(`/users/${user._id}`, user)
+}
+
 
 const userServices={
     userLogin,
     getAllUsers,
     deleteUser,
     AddUser,
-    getUserById
+    getUserById,
+    updateUser,
+    updateUserMP
 }
 
 export default userServices

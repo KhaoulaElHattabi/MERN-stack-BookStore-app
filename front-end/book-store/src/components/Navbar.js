@@ -46,7 +46,7 @@ if (dataa) {
   
 } else {
   setHideButton(true)
-  console.log('Data not found in local storage.');
+ // console.log('Data not found in local storage.');
   setTitle("Log In")
 } 
       if (role == "admin"){
@@ -69,7 +69,7 @@ if (dataa) {
       const resul = await userServices.getUserById(id)
       setUser(resul.data)
       setImage(resul.data.image)
-      console.log(resul.data)
+      //console.log(resul.data)
       
 
     }
@@ -95,7 +95,7 @@ if (dataa) {
 
 
       let items = [
-        { label: 'Profile', icon: 'pi pi-fw pi-user' },
+        { label: 'Profile', icon: 'pi pi-fw pi-user', hidden: false },
         { label: 'Add Book', icon: 'pi pi-refresh',
         command: () => {
           if (role == "admin"){
@@ -124,7 +124,8 @@ if (dataa) {
       <Avatar image={image} className="mr-2" shape="circle" />
       <div className="flex flex-column align">
           <span className="font-bold">{uName}</span>
-          <span className="text-sm">{rolee}</span>
+          <span className="text-sm" style={{textTransform: "capitalize"}}>{rolee}</span>
+
       </div>
   </button>
 )}
@@ -151,15 +152,15 @@ if (dataa) {
           <li className="nav-item">
             <Link className="nav-link active" aria-current="page" to={loggedIn && role === "admin" ? "/admin" : "/user"}>Home</Link>
           </li>
-          <li class="nav-item dropdown">
-            <Link class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li className="nav-item dropdown">
+            <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Categories
             </Link>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <Link class="dropdown-item" to="#">Action</Link>
-              <Link class="dropdown-item" to="#">Another action</Link>
-              <div class="dropdown-divider"></div>
-              <Link class="dropdown-item" to="#">Something else here</Link>
+            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <Link className="dropdown-item" to="#">Action</Link>
+              <Link className="dropdown-item" to="#">Another action</Link>
+              <div className="dropdown-divider"></div>
+              <Link className="dropdown-item" to="#">Something else here</Link>
             </div>
           </li>
           <li className="nav-item">

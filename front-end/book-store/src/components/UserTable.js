@@ -20,8 +20,14 @@ import FormUser from './FormUser';
       setVisible(!visible);
       handleReload()
     }
+    async function handleCountChange1() {
+      
+      setVisible3(!visible3)
+      handleReload()
+    }
     const [visible, setVisible] = useState(false);
     const [visible1, setVisible1] = useState(false);
+    const [visible3, setVisible3] = useState(false);
     const [users, setUsers] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [globalFilterValue, setGlobalFilterValue] = useState('');
@@ -29,6 +35,9 @@ import FormUser from './FormUser';
     const [currentPage, setCurrentPage] = useState(0);
     const navig = useNavigate();
     const [chosen, setChosen] = useState("");
+    const [id, setId] = useState("");
+    const [del, setDel] = useState();
+
 
 
 
@@ -61,7 +70,7 @@ import FormUser from './FormUser';
   </div>
   <div style={{ display: 'block' }}>
     <p className="m-0" style={{  fontSize: '1rem', fontWeight: 'bold', marginBottom: '5px' }}>{chosen.uName}</p>
-    <p className="m-0" style={{  fontSize: '1rem', fontWeight: 'normal', marginLeft: '20px' }}>{chosen.role}</p>
+    <p className="m-0" style={{ textTransform: 'capitalize', fontSize: '1rem', fontWeight: 'normal', marginLeft: '20px' }}>{chosen.role}</p>
   </div>
 </div>
 
@@ -72,7 +81,7 @@ import FormUser from './FormUser';
 
     const confirmDelete = (id) => {
       confirmDialog({
-          message: 'Do you want to delete this record?',
+          message: 'Do you want to delete '+String(del)+' ?',
           header: 'Delete Confirmation',
           icon: 'pi pi-info-circle',
           acceptClassName: 'p-button-danger',
@@ -132,6 +141,7 @@ import FormUser from './FormUser';
     }
 
     useEffect(() => {
+   
       setLoading(true);
       fetchData();
       setLoading(false);
@@ -140,8 +150,9 @@ import FormUser from './FormUser';
     async function getUser(id)
     {
       const resul = await userServices.getUserById(id)
-      console.log(resul.data)
+     // console.log(resul.data)
       setChosen(resul.data)
+      
       
 
     }
@@ -158,7 +169,7 @@ import FormUser from './FormUser';
                   <i className="pi pi-plus pi-outlined " style={{margin:"0px 25px 0 0 ",border:"1px solid #ced4da", padding:"0.7rem",borderRadius:"15px",fontSize: "1rem", cursor: "pointer"}} onClick={() => setVisible(true)} />
                   
                   </div>
-                  <span class="search-container">
+                  <span className="search-container">
                       
 
                       <div style={{ position: 'relative' }}>
@@ -179,6 +190,9 @@ import FormUser from './FormUser';
             <Dialog header="Add User" visible={visible} style={{ width: '50vw' }} onHide={() => setVisible(false)}>
                 <FormUser isToggled={visible} toggle={handleCountChange}></FormUser>
             </Dialog>
+            <Dialog header="Add User" visible={visible3} style={{ width: '50vw' }} onHide={() => setVisible3(false)}>
+                <FormUser value={id} isToggled={visible3} toggle={handleCountChange1}></FormUser>
+            </Dialog>
             <Dialog header="User Information" visible={visible1} style={{ width: '50vw' }} onHide={() => setVisible1(false)}>
             
             <Card header={header}  className="md:w-25rem" style={{ margin: 'auto', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', borderRadius: '10px', overflow: 'hidden' }}>
@@ -188,7 +202,7 @@ import FormUser from './FormUser';
   <div style={{ flex: 1, marginRight: '20px' }}>
     <p className="m-0" style={{ fontSize: '1rem', fontWeight: 'bold' }}>First Name : {chosen.fName}</p>
     <p className="m-0" style={{ fontSize: '1rem', fontWeight: 'normal' }}>Last Name : {chosen.lName}</p>
-    <p className="m-0" style={{ fontSize: '1rem', fontWeight: 'lighter' }}>Email : {chosen.email}</p>
+    <p className="m-0" style={{ fontSize: '1rem', fontWeight: 'lighter' }}>{chosen.email}</p>
   </div>
   <div style={{ width: '100px', height: '100px', borderRadius: '40%', overflow: 'hidden',marginLeft:'50px' }}>
     <img src="https://www.investopedia.com/thmb/hJrIBjjMBGfx0oa_bHAgZ9AWyn0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/qr-code-bc94057f452f4806af70fd34540f72ad.png" style={{ width: '100%', height: '100%' }} />
@@ -229,18 +243,18 @@ import FormUser from './FormUser';
       {filteredUsers
         .slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
         .map((user) => (
-          <tr className="rows" key={user.id}>
+          <tr className="rows" key={user._id}>
             <td style={{ padding: "14px" }}>
   <div style={{ width: "50px", height: "50px", borderRadius: "40%", overflow: "hidden" }}>
     <img src={user.image} alt={user.fName} style={{ width: "100%", height: "100%" }} />
   </div>
 </td>
 
-            <td style={{ padding: "14px" }}>{user.fName}</td>
-            <td style={{ padding: "14px" }}>{user.lName}</td>
-            <td style={{ padding: "14px" }}>{user.uName}</td>
-            <td style={{ padding: "14px" }}>{user.email}</td>
-            <td style={{ padding: "14px" }}>{user.role}</td>
+            <td style={{ padding: "14px",textTransform: "capitalize" }}>{user.fName}</td>
+            <td style={{ padding: "14px",textTransform: "capitalize" }}>{user.lName}</td>
+            <td style={{ padding: "14px",textTransform: "capitalize" }}>{user.uName}</td>
+            <td style={{ padding: "14px",textTransform: "capitalize" }}>{user.email}</td>
+            <td style={{ padding: "14px",textTransform: "capitalize" }}>{user.role}</td>
             
             <td style={{ padding: "14px" }}>
                 <i
@@ -251,6 +265,12 @@ import FormUser from './FormUser';
                       tabSize: "18px",
                       fontSize: "18px",
                       cursor: "pointer",
+                    }}
+                    onClick={() => {
+                      setId(user._id)
+                      setVisible3(true);
+                      //console.log("Id"+id)
+                     
                     }}
                    
                   />
@@ -279,7 +299,8 @@ import FormUser from './FormUser';
                       fontSize: "18px",
                       cursor: "pointer",
                     }}
-                    onClick={() => confirmDelete(user._id)}
+                    onClick={() => {confirmDelete(user._id)
+                      setDel(user.uName)}}
                   />
                   
                 </td>
