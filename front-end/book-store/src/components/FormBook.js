@@ -77,9 +77,16 @@ form.reset();
     return(
         <>
         <Navbar/>
-        <h2 style={{ paddingTop:"20px", border:"none"}}>
-      Add Book
-    </h2>
+        <div style={{ display: "flex", alignItems: "center" ,textAlign: "center",justifyContent:"center",marginTop:"20px"}}>
+  <h3 style={{ margin: "0", paddingRight: "20px" }}>Add Book</h3>
+  
+  <div style={{ width: "50px", height: "50px", borderRadius: "40%", overflow: "hidden", marginRight: "20px" }}>
+    <img src={base64String}  style={{ width: "100%", height: "100%" }} />
+  </div>
+  <td style={{ padding: "14px" }}>
+  
+  </td>
+</div>
 <form onSubmit={(event)=>submitBook(event)} className="row g-3 needs-validation" noValidate style={{maxHeight: "300px", maxWidth:"1000px", margin:"auto",marginTop:"20px", paddingTop:"20px", border:"none"}}>
         <div className="col-md-4">
           <label htmlFor="validationCustom01" className="form-label">Name</label>
@@ -162,10 +169,7 @@ form.reset();
         
         
       </form>
-      <div style={{maxHeight: "300px", maxWidth:"1000px",  marginTop:"20px", paddingTop:"20px", border:"none"}}>
-
-        <img src={base64String} className="card-img-top p-2 d-flex  " alt="book cover" style={{maxHeight: "250px",maxWidth:"125px"}} />
-        </div>
+  
         </>
         
     )

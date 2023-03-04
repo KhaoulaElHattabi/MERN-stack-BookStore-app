@@ -35,6 +35,9 @@ async function getAllUsers(){
 async function AddUser(u){
     return await http.post(`/users`, u)
 }
+async function getUserById(id){
+    return await http.get(`/users/${id}`)
+}
     
 
 async function deleteUser(id){
@@ -45,7 +48,8 @@ const userServices={
     userLogin,
     getAllUsers,
     deleteUser,
-    AddUser
+    AddUser,
+    getUserById
 }
 
 export default userServices

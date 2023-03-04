@@ -7,32 +7,47 @@ import { Menu } from 'primereact/menu';
 import 'primeicons/primeicons.css';
 import { Link } from 'react-router-dom';
 import { PrimeIcons } from 'primereact/api';
-
+import { Toast } from 'primereact/toast';
+import { Avatar } from 'primereact/avatar';
+import { classNames } from 'primereact/utils';
+import userServices from '../services/userService';
 
 
 function Navbar(){
+  const [hideButton, setHideButton] = useState(false);
 
+const toast = useRef<Toast>(null);
   const  [shouldHide, setShouldHide] = useState(true); 
   const loggedIn= localStorage.getItem('logged')
   const role= localStorage.getItem('role')
   const menu = useRef(null)
+  const  [uName, setUName] = useState(""); 
+  const  [rolee, setRolee] = useState(""); 
+  const  [image, setImage] = useState(""); 
+  const  [id, setId] = useState(""); 
+  const  [user, setUser] = useState();
+  const  [title, setTitle] = useState("");
 
 
   useEffect(() => {
-
+    
     // Retrieve data from local storage
 
 const dataa = window.localStorage.getItem("user");
 
 if (dataa) {
-
   const parsedData = JSON.parse(dataa);
-  
   var role = parsedData.data.role;
-
+  setUName(parsedData.data.username)
+  setRolee(parsedData.data.role)
+  setId(parsedData.data.id)
+  getUser(parsedData.data.id)
+  setTitle("Log Out")
   
 } else {
+  setHideButton(true)
   console.log('Data not found in local storage.');
+  setTitle("Log In")
 } 
       if (role == "admin"){
         setShouldHide(false);
@@ -42,14 +57,21 @@ if (dataa) {
       {
         setShouldHide(true);
        // console.log("user :"+shouldHide)
-      }
-      
-      
+      } 
   }, []);
   //console.log("final "+shouldHide)
     const nav =useNavigate()
     function go(){
       nav("/book-add")
+    }
+    async function getUser(id)
+    {
+      const resul = await userServices.getUserById(id)
+      setUser(resul.data)
+      setImage(resul.data.image)
+      console.log(resul.data)
+      
+
     }
     
    
@@ -57,11 +79,18 @@ if (dataa) {
 
 
     const logOut=()=>{
-      localStorage.removeItem('token')
-      localStorage.removeItem('user')
-      localStorage.removeItem('role')
-      localStorage.removeItem('logged')
-        nav("/store")
+      const dataa = window.localStorage.getItem("user");
+      if (dataa) {
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+        localStorage.removeItem('role')
+        localStorage.removeItem('logged')
+          nav("/store")
+        
+      } else {
+        nav("/login")
+      } 
+     
       }
 
 
@@ -79,12 +108,30 @@ if (dataa) {
         },hidden: shouldHide
         
       },
-        { label: 'Log Out', icon: PrimeIcons.SIGN_OUT,
+        { label: title, icon: PrimeIcons.SIGN_OUT,
         command: () => {
           logOut()
       }
 
-         }
+         },
+         { 
+          command: () => { toast.current.show({ severity: 'info', summary: 'Info', detail: 'Item Selected', life: 3000 }); },
+          template: (item, options) => {
+              return (
+                <>
+                  {!hideButton && (
+  <button onClick={(e) => options.onClick(e)} className={classNames(options.className, 'w-full p-link flex align-items-center')}>
+      <Avatar image={image} className="mr-2" shape="circle" />
+      <div className="flex flex-column align">
+          <span className="font-bold">{uName}</span>
+          <span className="text-sm">{rolee}</span>
+      </div>
+  </button>
+)}
+
+                  </>
+              )
+      }}
         
       ]
 

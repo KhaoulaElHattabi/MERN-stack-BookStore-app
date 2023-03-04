@@ -57,7 +57,7 @@ const FormUser = (props) =>{
             
             event.preventDefault();
          
-            
+            const res = await userServices.getAllUsers();
 
             const u={
               "uName": uName,
@@ -81,11 +81,19 @@ form.reset();
     return(
         <>
 
-        <h2 style={{ paddingTop:"20px", border:"none"}}>
-      Add User
-    </h2>
+<div style={{ display: "flex", alignItems: "center" ,textAlign: "center",justifyContent:"center"}}>
+  <h3 style={{ margin: "0", paddingRight: "20px" }}>{uName}</h3>
+  
+  <div style={{ width: "50px", height: "50px", borderRadius: "40%", overflow: "hidden", marginRight: "20px" }}>
+    <img src={base64String}  style={{ width: "100%", height: "100%" }} />
+  </div>
+  <td style={{ padding: "14px" }}>
+  
+  </td>
+</div>
+
         
-<form onSubmit={(event)=>submitUser(event)} className="row g-3 needs-validation" noValidate style={{maxHeight: "300px", maxWidth:"1000px", margin:"auto",marginTop:"20px", paddingTop:"20px", border:"none"}}>
+<form onSubmit={(event)=>submitUser(event)} className="row g-3 needs-validation" noValidate style={{maxHeight: "400px", maxWidth:"1000px", margin:"auto",marginTop:"20px", paddingTop:"20px", border:"none"}}>
         <div className="col-md-4">
           <label htmlFor="validationCustom01" className="form-label">User Name</label>
           <input type="text" className="form-control" id="validationCustom01"  required  onChange={event => setUName(event.target.value)}/>
@@ -110,24 +118,24 @@ form.reset();
             </div>
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-4">
           <label htmlFor="validationCustom03" className="form-label">Email</label>
           <input type="text" className="form-control" id="validationCustom03" required onChange={event => setEmail(event.target.value)}/>
           <div className="invalid-feedback">
             Please provide a valid city.
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-4">
           <label htmlFor="validationCustom03" className="form-label">Password</label>
           <input type="password" className="form-control" id="validationCustom03" required onChange={event => setPasswordr(event.target.value)}/>
           <div className="invalid-feedback">
             Please provide a valid city.
           </div>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-4">
           <label htmlFor="validationCustom04" className="form-label">Role</label>
           <select className="form-select" id="validationCustom04" required onChange={event => setRole(event.target.value)}>
-  <option disabled value>Choose...</option>
+  <option  value>Choose...</option>
   <option value="admin">Admin</option>
   <option value="user">User</option>
 </select>
@@ -151,7 +159,7 @@ form.reset();
             Please provide a valid city.
           </div>
         </div>
-        <div className="col-12">
+        <div className="col-12" style={{ display: "flex", alignItems: "center" ,textAlign: "center",justifyContent:"center"}}>
         <Button style={{marginTop:20}} variant="primary" type="submit"  onClick={handleButtonClick}>
         Submit
       </Button>
@@ -160,10 +168,7 @@ form.reset();
         
         
       </form>
-      <div style={{maxHeight: "300px", maxWidth:"1000px",  marginTop:"20px", paddingTop:"20px", border:"none"}}>
-
-        <img src={base64String} className="card-img-top p-2 d-flex  " alt="book cover" style={{maxHeight: "250px",maxWidth:"125px"}} />
-        </div>
+      
         </>
         
     )

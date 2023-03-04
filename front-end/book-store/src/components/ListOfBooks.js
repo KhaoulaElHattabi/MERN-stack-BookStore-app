@@ -93,7 +93,7 @@ const ListOfBooks = (props) => {
     };
   const [visible2, setVisible2] = useState(false);
   const open= ()=>{
-    console.log(cbook)
+    ////console.log(cbook)
     setVisible2(true);
   }
   const menu = useRef(null);
@@ -138,7 +138,7 @@ const footer = (
       async function getBookById(chosen){
         const result = await bookService.getBookById(chosen);
         setCbook(result.data);
-        console.log(cbook)
+        //console.log(cbook)
         setId(result.data._id)
         setName(result.data.name)
         setDescription(result.data.description)
@@ -165,7 +165,7 @@ const footer = (
       async function deleteBook(id) {
     
         const result = await bookService.deleteBook(id);
-        console.log("book supprimé")
+        //console.log("book supprimé")
        getBooks();
       }
       useEffect(() => {
@@ -178,16 +178,16 @@ if (dataa) {
   var role = parsedData.data.role;
   
 } else {
-  console.log('Data not found in local storage.');
+  //console.log('Data not found in local storage.');
 } 
       if (role == "admin"){
         setShouldHide(false);
-       // console.log("Admin :"+shouldHide)
+       // //console.log("Admin :"+shouldHide)
       }
       else 
       {
         setShouldHide(true);
-       // console.log("user :"+shouldHide)
+       // //console.log("user :"+shouldHide)
       }
       }, []);
       async function getDistinctAuthors() {
@@ -203,7 +203,7 @@ if (dataa) {
       
         const numberOfDistinctAuthors = distinctAuthors.length;
         setAuteurNb(numberOfDistinctAuthors)
-        console.log(numberOfDistinctAuthors); // Output: the number of distinct authors in the API data
+        //console.log(numberOfDistinctAuthors); // Output: the number of distinct authors in the API data
       }
       async function getBooksAddedInLastHour() {
         const result = await bookService.getAllBooks();
@@ -219,7 +219,7 @@ if (dataa) {
       
         const numberOfBooksAddedInLastHour = booksAddedInLastHour.length;
         setBookNb24(numberOfBooksAddedInLastHour)
-        console.log(numberOfBooksAddedInLastHour); // Output: the number of books added in the last hour
+        //console.log(numberOfBooksAddedInLastHour); // Output: the number of books added in the last hour
       }
 
     
@@ -227,7 +227,7 @@ if (dataa) {
         const result = await bookService.getAllCategories();
        
         setCat(result.data)
-        console.log(result.data)
+        //console.log(result.data)
     }
     useEffect(() => {
         getAllCategories();
@@ -256,7 +256,7 @@ if (dataa) {
             await  bookService.updateBook(p);  
             setVisible1(false);
             getBooks()
-            console.log("done")
+            //console.log("done")
       // Get a reference to the form element
 const form = document.querySelector('form');
 

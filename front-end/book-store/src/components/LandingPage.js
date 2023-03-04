@@ -10,7 +10,11 @@ import { Checkbox } from 'primereact/checkbox';
 import myImage from '../assets/couverture.jpg';
 import { useNavigate,  } from 'react-router-dom';
 export default function BasicDemo() {
+    const [isToggled, setIsToggled] = useState(false);
     const navig=useNavigate()
+    function toggle() {
+        setIsToggled(true);
+      }
     const nav=()=>{
         const dataa = window.localStorage.getItem("user");
         if (dataa) {
@@ -106,7 +110,7 @@ export default function BasicDemo() {
     return (
 
         <>
-         <Navbar />
+         <Navbar isToggled={isToggled} toggle={toggle} />
 <div className="grid grid-nogutter surface-0 text-800">
     <div className="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
         <section>
