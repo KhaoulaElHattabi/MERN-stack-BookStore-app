@@ -148,7 +148,7 @@ if (dataa) {
   <nav className="navbar navbar-expand-lg bg-body-tertiary" >
     <div className="container-fluid">
       <Link className="navbar-brand" to={loggedIn && role === "admin" ? "/admin" : "/user"}>
-  <img src="https://cdn.logo.com/hotlink-ok/logo-social.png" style={{ width: "50px", height: "50px" }} />
+      <img src="https://cdn.logo.com/hotlink-ok/logo-social.png"alt="hyper" height={50} className="mb-3" />
 </Link>
 
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
