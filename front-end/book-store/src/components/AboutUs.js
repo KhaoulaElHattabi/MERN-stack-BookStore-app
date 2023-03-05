@@ -5,6 +5,8 @@ import karimImage from '../assets/karim.JPG';
 import khaoula from '../assets/khaoula.jpg';
 import FileBase64 from 'react-file-base64';
 import { Button } from "primereact/button";
+import { InputText } from "primereact/inputtext";
+import { Checkbox } from "primereact/checkbox";
 export default function AboutUs(){
   return (
     <>
@@ -30,7 +32,7 @@ export default function AboutUs(){
 </div>
 
                     <hr className="mb-3 mx-0 border-top-1 border-bottom-none border-300 mt-auto" />
-                    <Button label="Linkedin" className="p-3 w-4 mt-auto" />
+                    <Button label="Contact Me" className="p-3 w-4 mt-auto" />
                 </div>
             </div>
         </div>
@@ -49,7 +51,7 @@ export default function AboutUs(){
 </div>
 
                     <hr className="mb-3 mx-0 border-top-1 border-bottom-none border-300 mt-auto" />
-                    <Button label="Linkedin" className="p-3 w-4 mt-auto" />
+                    <Button label="Contact Me" className="p-3 w-4 mt-auto" />
                 </div>
             </div>
         </div>
@@ -68,12 +70,39 @@ export default function AboutUs(){
 </div>
 
                     <hr className="mb-3 mx-0 border-top-1 border-bottom-none border-300 mt-auto" />
-                    <Button label="Linkedin" className="p-3 w-4 mt-auto" />
+                    <Button label="Contact Me" className="p-3 w-4 mt-auto" />
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div className="flex align-items-center justify-content-center">
+    <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+        <div className="text-center mb-5">
+            <img src="https://cdn.logo.com/hotlink-ok/logo-social.png" alt="hyper" height={50} className="mb-3" />
+            <div className="text-900 text-3xl font-medium mb-3">Welcome Back</div>
+            <span className="text-600 font-medium line-height-3">Don't have an account?</span>
+            <a className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a>
+        </div>
+
+        <div>
+            <label htmlFor="email" className="block text-900 font-medium mb-2">Email</label>
+            <InputText id="email" type="text" placeholder="Email address" className="w-full mb-3" />
+
+            <label htmlFor="password" className="block text-900 font-medium mb-2">Message</label>
+            <InputText id="text" type="text" placeholder="Message" className="w-full mb-3" />
+
+            <div className="flex align-items-center justify-content-between mb-6">
+                
+                
+            </div>
+
+            <Button label="Contact us" icon="pi pi-user" className="w-full" />
+        </div>
+    </div>
+</div>
+    
 <div className="bg-bluegray-900 text-gray-100 p-3 flex justify-content-between lg:justify-content-center align-items-center flex-wrap" style={{ marginTop:"10px" }}>
     <div className="font-bold mr-8">🔥 Book Store</div>
     <div className="align-items-center hidden lg:flex">

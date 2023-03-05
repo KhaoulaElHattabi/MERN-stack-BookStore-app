@@ -77,6 +77,14 @@ function Login() {
           <br></br>
         </Card>
       </div>
+      <div className="bg-bluegray-900 text-gray-100 p-3 flex justify-content-between lg:justify-content-center align-items-center flex-wrap" style={{ marginTop:"10px" }}>
+    <div className="font-bold mr-8">🔥 Book Store</div>
+    <div className="align-items-center hidden lg:flex">
+        <span className="line-height-3">Copyright © 2023 ABC Books. All rights reserved.</span>
+    </div>
+    
+    
+</div>
     </>
   );
 }

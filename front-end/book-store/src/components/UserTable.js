@@ -189,7 +189,7 @@ import FormUser from './FormUser';
             <Dialog header="Add User" visible={visible} style={{ width: '50vw' }} onHide={() => setVisible(false)}>
                 <FormUser isToggled={visible} toggle={handleCountChange}></FormUser>
             </Dialog>
-            <Dialog header="Add User" visible={visible3} style={{ width: '50vw' }} onHide={() => setVisible3(false)}>
+            <Dialog header="Update User" visible={visible3} style={{ width: '50vw' }} onHide={() => setVisible3(false)}>
                 <FormUser value={id} isToggled={visible3} toggle={handleCountChange1}></FormUser>
             </Dialog>
             <Dialog header="User Information" visible={visible1} style={{ width: '50vw' }} onHide={() => setVisible1(false)}>
