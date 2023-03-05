@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 
 import karimImage from '../assets/karim.JPG';
 import khaoula from '../assets/khaoula.jpg';
+import oussama from '../assets/oussama.jpg';
 import FileBase64 from 'react-file-base64';
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
@@ -65,7 +66,7 @@ export default function AboutUs(){
                     
                     <hr className="my-3 mx-0 border-top-1 border-bottom-none border-300" />
                     <div className="">
-  <img src={karimImage} style={{ width: '200px', height: '250px',maxWidth:'300px',maxHeight:'300px' }} />
+  <img src={oussama} style={{ width: '200px', height: '250px',maxWidth:'300px',maxHeight:'300px' }} />
   
 </div>
 

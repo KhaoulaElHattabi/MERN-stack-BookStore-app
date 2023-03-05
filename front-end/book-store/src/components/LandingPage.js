@@ -116,7 +116,7 @@ export default function BasicDemo() {
         <section>
             <span className="block text-6xl font-bold mb-1">Explore a world of stories</span>
             <div className="text-6xl text-primary font-bold mb-3">at LITERARY CORNER</div>
-            <p className="mt-0 mb-4 text-700 line-height-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p className="mt-0 mb-4 text-700 line-height-3">Check our Store Now</p>
 
             <Button label="Get More" type="button" className="mr-3 p-button-raised"  onClick={() => nav()} />
            
