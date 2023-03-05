@@ -40,7 +40,6 @@ import FormUser from './FormUser';
 
 
 
-
     //delete confirm dialog
     const handleDelete = async (id) => {
       await userServices.deleteUser(id);

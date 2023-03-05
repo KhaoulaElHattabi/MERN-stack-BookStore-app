@@ -279,3 +279,10 @@ button:focus {
 .navbar-expand-lg .bg-body-tertiary{
   padding: 11px
 }
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 1.5rem;
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+}

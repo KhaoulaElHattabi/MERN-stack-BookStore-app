@@ -43,7 +43,7 @@ const FormUser = (props) =>{
     const [fName, setFName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [password1, setPassword1] = useState("");
+    const [password1, setPassword1] = useState();
     const [id, setId] = useState(props.value);
     const [image, setImage] = useState("");
     const [chosen, setChosen] = useState();
@@ -126,7 +126,7 @@ const FormUser = (props) =>{
             }
             //console.log(u)
             if(props.value!= null){
-              if(password1===0){
+              if(password1===null||password1.trim().length== 0){
                 // console.log("vide")
                 const up={
                   "_id":props.value,
@@ -161,7 +161,7 @@ const FormUser = (props) =>{
                //console.log("Update done")
               }
               
-
+              
             }
             else{
               setButton("Submit")
