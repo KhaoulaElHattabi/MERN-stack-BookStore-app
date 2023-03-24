@@ -48,7 +48,7 @@ const addBook=async(req,res)=>{
 
 const addCategory=async(req,res)=>{
     try{
-        const exists = await Category.findOne({name:req.body.name})
+        const exists = await catalService.findCategory({name:req.body.name})
           if(exists){
                 res.status(400).json("Category Already exists")
             }else{

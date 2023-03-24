@@ -47,6 +47,9 @@ const getCategoryById =async(id)=>{
    return await Category.findById(id)
 }
 
+const findCategory=async(id)=>{
+   return await Category.findOne(id)
+}
 
 module.exports={
     getAllBooks,
@@ -58,7 +61,8 @@ module.exports={
     createCategory,
     deleteCategoryById,
     updateCategory,
-    getCategoryById
+    getCategoryById,
+    findCategory
     
 }
 
